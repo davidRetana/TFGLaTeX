@@ -1,0 +1,86 @@
+\chapter{Kaggle y KDD}
+\textbf{Kaggle}\index{Kaggle} es una plataforma que aloja datos de diversas fuentes y organiza 
+competiciones para que todo aquel que desee pueda desarrollar sus modelos predictivos y analíticos 
+con el objetivo de conseguir el mayor desempeño.
+Esta página pone en contacto diversos perfiles de personas (científicos de datos, mineros de datos...) 
+con diversos problemas que a menudo exponen compañías y premian a aquellos equipos de personas que 
+obtengan la mejor puntuación.
+La plataforma tiene una serie de conceptos sobre los que se desarrolla:
+\begin{description}
+  \item[Competiciones] Permite a las empresas ponerse en contacto con los científicos de datos de la 
+  comunidad Kaggle para resolver determinados problemas para su propio beneficio. Los mejores equipos 
+  reciben una compensación económica así como puntos para el ranking interno de Kaggle.
+  Las competiciones estas clasificadas por nivel de dificultad, variando desde un nivel principiante 
+  para iniciarse en el mundo de la ciencia de datos hasta un nivel experto en el cual obliga a los 
+  participantes a desarrollar un proyecto de \textit{machine learning} de inicio a final (\textit{end to end}), esto es, 
+  preprocesamiento, ingeniería de características, elección del modelo, evaluación...
+  \item[Datasets] La plataforma pone a disposición de todo aquel que quiera datos para entrenar de muy 
+  diversas fuentes y con diversos objetivos. Nos encontramos con datos que van desde clasificación, 
+  regresión, clusterización...
+  \item[Kernels\index{Kernels}] Los kernels en Kaggle son \textit{scripts} de código que pueden ser ejecutados 
+  en la nube y sirven de ayuda al resto de la comunidad para iniciarse en un cierto problema, preprocesar un 
+  conjunto de datos, construir un modelo...
+  Los kernels permiten ser valorados por el resto de usuarios que pueden premian tu trabajo con votos y comentarios.
+\end{description}
+Además de todo lo mencionado anteriormente, Kaggle dispone de un foro para discutir las diversas 
+problemáticas que puedan surgir a cada usuario. Conecta a miles de \textit{Data Scientish} de todo el mundo 
+para que intercambien ideas y conocimientos.
+La plataforma fue fundada por \href{https://en.wikipedia.org/wiki/Anthony_Goldbloom}{Anthony Goldbloom} 
+en el año 2010 y se puede acceder a través de \url{https://www.kaggle.com/}
+\newline
+
+\vspace*{1cm}
+
+\noindent\textbf{KDD}\index{KDD} viene de sus siglas en inglés \textit{Knowledge Discover Dataset}, y se refiere al hecho 
+de sacar información útil de un \textit{dataset}, es decir, extraer conocimiento de los datos.
+En su página web \url{http://www.kdd.org/} podemos encontrar toda la información relacionada con lo 
+que hacen y a que se dedican. Organizan conferencias y eventos acerca de \textit{KDD}, 
+publican \textit{papers}\footnote{documentos que contienen trabajos científicos}
+y noticias acerca de temas de innovación, investigaciones y demás relacionadas con el \textit{KDD}.
+Cada año lanza una competición abierta al público para que todo aquel interesado pueda descargarse 
+el conjunto de datos que proporciona y realizar la tarea que se busca. Una de las \textit{KDD Cup} mas famosas 
+fue la del año 1999 \url{http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html}.
+\newline
+
+\vfill
+
+\noindent \textbf{Algunos repositorios de \textit{datasets} de interés:}\\
+\url{https://www.kaggle.com/datasets}\\
+\url{http://archive.ics.uci.edu/ml/index.php}\\
+\url{http://deeplearning.net/datasets/}\\
+
+
+\chapter{Cloudera}\label{apendix:cloudera}
+\textbf{\textit{Cloudera}}\index{Cloudera} es una compañía que proporciona software basado en 
+\textit{Apache Hadoop}, formación y soporte técnico. 
+De dicho software, en este trabajo se ha usado \textit{Cloudera Manager}, aquí explicamos de manera general 
+las 2 posibles opciones para desplegar un \textit{cluster}
+\begin{itemize}
+  \item \textit{CDH} (\textit{Cloudera Distribution Hadoop})\index{Cloudera!CDH} es una distribución de 
+  \textit{Hadoop} modificada por \textit{Cloudera} que permite instalar \textit{Hadoop} con una serie 
+  de paquetes para abstraer al programador de tareas como la instalación manual de todos los servicios 
+  de un \textit{cluster}, creación de usuarios, mantenimiento...
+  
+  \item \textit{Cloudera Manager}\index{Cloudera!Manager} (CM) es un asistente gráfico que mediante 
+  una API REST\index{Api Rest} permite crear  y gestionar \textit{clusters} de máquinas de una manera sencilla 
+  y visual. Con esta herramienta se pueden desplegar servicios en el \textit{cluster}, montar seguridad 
+  (\textit{Kerberos, Sentry}...), acceso unificado a los \textit{logs}\index{Archivo log}
+  \footnote{Archivos que solo permiten añadir contenido al final del mismo y sirven para saber de manera 
+  mas detallada lo que pasa en la ejecución de un programa} y demás opciones.
+  También ofrece métricas y estadísticas del \textit{cluster} tales como uso de 
+  \textit{CPU}, tráfico de red, I/O de disco...
+  Esta opción sería la mas sensata cuando el \textit{cluster} tiene muchos nodos o tiene muchos servicios
+  instalados en el, ya que mantenerlo se volvería una tarea bastante tediosa y propensa a fallos.
+\end{itemize}
+
+Tanto \textit{CDH} como \textit{CM} son de código abierto y cualquiera puede acceder a ellos 
+bajo licencia de \textit{Cloudera}.
+En este documento se ha detallado la instalación de un \textit{cluster} usando Cloudera Manager en la
+\autoref{sec:instalacion_hdfs_yarn}
+
+\begin{figure}[!htpb]
+  \centering
+  \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/cloudera_logo.png}
+  \caption[Logo de Cloudera]{Logo de Cloudera}
+  \label{cloudera_manager}
+\end{figure}

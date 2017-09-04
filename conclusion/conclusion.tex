@@ -1,0 +1,75 @@
+\chapter*{Conclusión y líneas de trabajo futuras}
+\markboth{Conclusión}{} % para que la cabecera coincida bien con el capítulo
+% Mini mini resumen del report
+Hemos visto como desplegar un \textit{cluster} de máquinas utilizando un software llamado 
+\textit{Apache Hadoop}, y posteriormente utilizarlo para desarrollar algoritmos 
+paralelos de \textit{machine learning} y testar su eficiencia en distintos conjuntos de datos.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Retomar los objetivos y evaluarlos
+%TODO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Lanzarse a la piscina
+Los algoritmos desarrollados son escalables, esto es, el incremento de datos a procesar solo penaliza en
+el rendimiento y nunca llega a colapsar el programa.
+Tanto los desarrollados con \textit{MapReduce} como con \textit{Spark} cumplen con dichas condiciones de
+escalabilidad, si bien el diseño de cada uno de ellos es diferente debido a su arquitectura interna.
+En ambos enfoques, la capacidad de escalar se consigue al no guardar variables que colapsen
+la memoria del nodo trabajador.\\
+Respecto a los algoritmos en paralelo desarrollados en este trabajo, destaca la importante mejora de los
+tiempos transcurridos al entrenar modelos matemáticos a media que el tamaño del conjunto de datos crece.
+Son notables las diferencias de programación según se enfoque el problema, como se explico en la sección
+\autoref{sec:distintos_enfoques_procesamiento}
+\newline
+
+\subsection*{Líneas de trabajo futuras}
+El \textbf{\textit{Deep Learning}}\index{Deep Learning} es una parte del \textit{machine learning} 
+que esta enfocada en las redes neuronales convolucionales, y que por su naturaleza estas toman un gran 
+tiempo de entrenamiento.\\
+Una posible rama de trabajo futura sería el estudio y desarrollo de técnicas paralelas para poder
+entrenar redes neuronales convolucionales (CNN por sus siglas en inglés) en un \textit{cluster} 
+y así reducir los tiempos de ejecución.
+En la tabla \autoref{MachineLearningVSDeepLearning} se muestran las principales diferencias conceptuales
+entre \textit{machine learning} y \textit{deep learning}.
+
+\begin{table}[!htpb]
+  \centering
+  \begin{tabular}{|r|c|c|} % tabla
+    \hline
+    & \textbf{\textit{Machine Learning}} & \textbf{\textit{Deep Learning}} \\ \hline
+    Conjunto de entrenamiento & medio & grande \\ \hline
+    Ingeniería de características & manual & automática \\ \hline
+    Clasificadores disponibles & muchos & pocos \\ \hline
+    Tiempo de entrenamiento & medio & grande \\ \hline
+  \end{tabular}
+   \caption[Diferencias entre \textit{Machine Learning} y \textit{Deep Learning}]
+           {Diferencias entre \textit{Machine Learning} y \textit{Deep Learning}}
+   \label{MachineLearningVSDeepLearning}
+\end{table}
+
+Otra posible línea de investigación reside en el uso de \textbf{\textit{GPU}}\footnote{Graphic Procesing 
+Unit}\index{GPU} para la aceleración del proceso de entrenamiento de una red neuronal, y en concreto 
+de una \textit{CNN}\footnote{Convolutional Neural Network}. 
+Este proceso paralelo se puede ejecutar bien sea en una solo máquina (como puede ser un ordenador personal) 
+o bien en un \textit{cluster} de máquinas donde cada nodo lleve incorporado una Unidad de Procesamiento Gráfico. \\
+Los procesadores gráficos de \href{http://www.nvidia.es/page/home.html}{\textit{NVIDIA}} poseen una 
+arquitectura de cálculo paralela llamada \href{http://www.nvidia.es/object/cuda-parallel-computing-es.html}{\textit{CUDA}} que permite aprovechar dicha tarjeta gráfica para realizar cómputos. Es especialmente útil en la multiplicación 
+de matrices ya que esencialmente una red neuronal se compone de matrices distinguidas en varias capas.
+Este trabajo puede servir de base para futuros proyectos acerca de la utilización de \textit{GPU's} en 
+\textit{clusters} de máquinas.
+\newline
+
+Una tercera línea de investigación posible es la utilización de algoritmos para otros fines de los que
+inicialmente fueron destinados. Para la compresión de imágenes se pueden utilizar distintos algoritmos de
+\textit{machine learning} como por ejemplo \textit{KMeans} o incluso \textit{PCA}\index{PCA}
+\footnote{\textit{Principal Component Analysis}}.\\
+Un tipo especial de redes neuronales denominadas autocodificadores o \textit{autoencoders} son aquellas que
+tienen 3 capas (una de entrada, una oculta y otra de salida) donde la capa de entrada y de salida son la misma
+y la capa oculta posee menos neuronas que las otras dos para así obligar a la red que aprenda a codificar los
+datos de entrada en un formato mas comprimido.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+

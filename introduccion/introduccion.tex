@@ -1,0 +1,56 @@
+\chapter*{Introducción}%\label{capitulo de introducción}
+\markboth{Introducción}{} % para que la cabecera coincida bien con el capítulo
+
+% Motivación
+Vivimos en la era de los datos, cada día se producen mas y mas datos que
+necesitan ser almacenados y procesados para poder sacarles beneficio.
+En los últimos 10 años se ha generado mas información que el acumulado de años
+anteriores y es por esta razón  por la que la manera de almacenar y procesar
+los datos ha cambiado.
+El \textbf{\textit{Big Data}}\index{Big Data}\label{big_data_def} nace como un concepto para hacer referencia a un 
+conjunto de datos masivo, que se origina debido a la incapacidad de los sistemas tradicionales 
+de almacenar y procesar toda la información disponible.
+La manipulación de grandes cantidades de datos ha de enfrentarse a varios
+retos, conocidos como las 3 v's del \textit{Big Data}.
+\begin{itemize}
+  \item Velocidad (Procesar los datos en un tiempo razonable)
+  \item Volumen (Tener la tecnología suficiente para abordar el volumen de datos existente)
+  \item Variedad (Saber tratar los distintos tipos de datos en sus diversos formatos)
+\end{itemize}
+Estos 3 componentes son los que hacen entender el \textit{Big Data} como un 
+concepto nuevo. Hemos pasado de hablar en \textit{GygaBytes} o \textit{TeraBytes}, a hablar 
+en \textit{PetaBytes} o incluso \textit{ExaBytes}, magnitudes muy por encima de las soportadas 
+por las máquinas tradicionales.
+\newline
+
+% Esquema del trabajo
+Este documento se estructura en 3 partes, una primera parte de introducción a Hadoop y despliegue,
+una segunda parte de análisis de datos donde se desarrollaran algoritmos de machine learning de manera distribuida, y una tercera y última parte con un apéndice de información útil acerca de sitios web 
+donde poner en practica los conocimientos adquiridos.
+Cada sección consta de una primera parte donde se explica la utilidad del algoritmo y sus casos de
+uso, a continuación una segunda parte donde se explica las matemáticas detrás del algoritmo y 
+finalmente una ultima parte donde se desarrolla el código de manera distribuida y la inclusión 
+del código fuente.
+\newline
+
+% Que me ha llevado a hacer este trabajo y objetivos que quiero conseguir
+La motivación a la hora de realizar este trabajo ha sido la necesidad de desarrollar algoritmos 
+de \textit{machine learning} de manera paralela, ya que los sistemas tradicionales no soportan 
+el entrenamiento de estos algoritmos bien sea por falta de memoria o por falta de capacidad de computo.\\
+Por esta razón, los objetivos que pretendo conseguir con este trabajo es la realización de estos 
+algoritmos utilizando las distintas herramientas existentes para el manejo de grandes volúmenes de 
+datos y el procesado de los mismos, entiéndase \textit{Hadoop}, \textit{MapReduce}, \textit{Spark}, etc.\\
+Se pretende realizar una introducción a todas estas herramientas creando un \textit{cluster} de 
+máquinas con \textit{Apache Hadoop}, instalando posteriormente la librería \textit{mrjob} de \textit{Python} e 
+instalando también el software \textit{Apache Spark}. Con estas 3 tecnologías será suficiente para 
+realizar los objetivos marcados y abrir unas líneas futuras de investigación para las cuales este 
+trabajo sea de ayuda.
+
+\vspace*{1.5cm}
+
+\begin{quote}
+    'Information is the oil of the $21st$ century, and analytics is the combustion engine'.
+	 \newline \raggedleft \textit{Peter Sondergaard}
+\end{quote}
+
+\clearpage

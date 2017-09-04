@@ -1,0 +1,142 @@
+\begin{abstract}
+En este trabajo se aborda el estudio de las tecnologías actuales para el tratamiento
+de grandes volumenes de datos, asi como la creación de un \textit{cluster} de máquinas 
+utilizando \textit{Apache Hadoop}\texttrademark y su utilización para desarrollar algoritmos
+de \textit{machine learning} de una manera distribuida, paralela, escalable y eficiente.
+Todas estas tecnologías son una parte del gran mundo que forma el \hyperref[big_data_def]{\textit{Big Data}}.
+\newline
+
+Se detalla el despliegue de un \textit{cluster} \textit{Hadoop} utilizando una herramienta gráfica 
+llamada \textit{Cloudera Manager}. Este software facilita enormemente el trabajo de desplegar un 
+\textit{cluster} ya que se gestiona automáticamente la monitorización de los nodos, la creación de 
+usuarios, ficheros de configuración y demás tareas.
+Cuando el tamaño del \textit{cluster} se vuelve grande o son muchos los servicios instalados en él,
+esta es la mejor opción para desplegarlo. Cloudera proporciona dos maneras para dicho despliegue
+que se explican de manera general en \autoref{apendix:cloudera}.
+\newline
+
+Este trabajo se enfoca también en desarrollar buenas prácticas en lo que a computación distribuida 
+se refiere y se comparan distintos enfoques para la resolución de un mismo problema.
+Estos enfoques permiten entender mejor los retos de la computación paralela y la depuración 
+de los algoritmos distribuidos.
+Los distintos enfoques a la hora de programar un algoritmo se basan en reducir los posibles cuellos 
+de botella que se puedan producir con los datos. Esto es, el uso de \textit{combiners} en trabajos 
+\textit{MapReduce}, ordenes que desencadenen \textit{shuffles}\footnote{movimiento de datos entre 
+nodos a través de la red} en \textit{Spark}, etc. 
+La escalabilidad de los algoritmos y el consumo de recursos de un proceso (memoria y \textit{CPU}) 
+también son estudiados.
+Al final de cada sección se ha incluido el código fuente de cada enfoque del problema y una tabla 
+comparativa de tiempos para evaluar la eficiencia del algoritmo desarrollado a media que el tamaño 
+del \textit{dataset} crece.
+\newline
+
+Los algoritmos de \textit{machine learning} se han desarrollado utilizando dos enfoques de programación 
+distribuida, bien sea usando el paradigma de programación \textit{MapReduce} o bien utilizando 
+el paradigma de programación funcional en el que esta orientado \textit{Spark}. \\
+La utilización de uno u otro enfoque depende en gran parte de la arquitectura del algoritmo, esto es, 
+para algoritmos iterativos es mas conveniente usar \textit{Spark} ya que permite persistir los datos en 
+memoria y por lo tanto reduce enormemente el tiempo de ejecución del algoritmo. Por el contrario, un 
+algoritmo como puede ser calcular la media y la varianza de un conjunto de datos, no requiere mas que 
+una pasada al completo del \textit{dataset}, por lo que con una fase \textit{map} y otra 
+\textit{reduce} es suficiente para calcular dichas variables.
+\newline
+
+A modo comparativo, se testean distintos diseños del algoritmo sobre distintos tamaños del conjunto 
+de datos con el fin de poder observar los tiempos de ejecución totales, el consumo de memoria, el 
+tráfico de red, la entrada y salida de disco, etc.
+Esto nos ayudará en gran medida en que centrarnos para poder mejorar un algoritmo, ya que sabremos 
+la raíz del problema.
+Algunos de esos problema pueden ser los siguientes:\\
+Si nuestro \textit{cluster} tiene un gran movimiento de red esto puede suponer un cuello de botella 
+para los datos y tal vez haya que rediseñar el algoritmo, si por el contrario nuestro \textit{cluster} 
+esta \textit{swapeando} memoria tal vez necesitemos añadir mas memoria \textit{RAM} a nuestros nodos 
+trabajadores.
+\newline
+
+Los algoritmos programados usando el paradigma de programación \textit{MapReduce} han sido 
+desarrollados usando la librería \textit{mrjob} del lenguaje de programación \textit{Python}\texttrademark . El resto de algoritmos se han desarrollado utilizando \textit{Apache Spark}, que esta enfocado al 
+paradigma de programación funcional.
+Se hace uso de las librerías \textit{open source} \textit{numpy}, \textit{scipy}, 
+\textit{matplotlib} y \textit{sklearn}, siempre que sean útiles para el propósito del desarrollo 
+y la visualización de los datos.
+\newline
+
+El final del documento esta compuesto por una conclusión de todo lo estudiado en el mismo asi como 
+unas líneas futuras en las cuales este trabajo puede servir de ayuda o incluso marcar un punto de 
+partida a futuros trabajos relacionados con el tema de \textit{Big Data}, \textit{machine learning} 
+e incluso \textit{deep learning} en un enfoque distribuido.
+\newline
+
+Todo el código fuente desarollado se encuentra disponible en mi página de 
+\href{https://github.com/davidRetana}{GitHub}
+
+\end{abstract}
+
+\selectlanguage{english}
+\setcounter{page}{8} %porque al cambiar de lenguaje se resetea el contador de paginas
+\begin{abstract}
+This paper deals with the study of current technologies for the treatment
+of large volumes of data, as well as the deployment of a cluster of machines
+using Apache Hadoop and its use to develop machine learning algorithms
+in a distributed, parallel, scalable and efficient way.
+All these technologies are a part of the big world that forms the \hyperref[big_data_def]{\textit{Big Data}}.
+\newline
+
+The deployment of a \textit{Hadoop cluster} is detailed using a graphical tool
+called \textit{Cloudera Manager}. This software greatly facilitates the work of deploying a
+\textit{cluster} beacuse it automatically manages the monitoring of the nodes, the creation of
+users, configuration files and other tasks.
+When the size of the \textit{cluster} becomes large or many services are installed on it,
+this is the best option to deploy it. Cloudera provides two ways for such deployment
+which are generally explained in \autoref{apendix:cloudera}.
+\newline
+
+This paper also focus on the development of good practices in what a distributed computing
+it is referred to and compared to other approaches to solving the same problem.
+These approaches allow a better understanding of the challenges of parallel computing and 
+debugging distributed algorithms.
+The different approaches to programming an algorithm are based on reducing possible bottlenecks
+that can be produced with the data. That is, the use of combinators in MapReduce jobs, orders to 
+trigger shuffle\footnote{Data transfer between nodes throught the network} in Spark, etc.
+The scalability of the algorithms and the resource consumption of a process (memory and CPU)
+they are also studied. \\
+At the end of each section, the source code for each approach to the problem has been included 
+and a comparative time table to evaluate the algorithm efficiency, developed while dataset size grows.
+\newline
+
+Machine learning algorithms have been developed using two distributed programming approaches, 
+either using the MapReduce programming paradigm or using the paradigm of functional programming 
+in which Spark is oriented.
+The use of one or the other approach depends on the architecture of the algorithm, that is,
+for iterative algorithms it is more convenient to use Spark since this persists the data in
+memory and therefore reduce the execution time of the algorithm. On the other way, an
+algorithm, for example calculate the mean and variance of a data set, requires only
+one complete pass of the dataset, so with one phase map and another reduce is enought 
+to calculate these variables.
+\newline
+
+By way of comparison, different algorithm designs are tested on the different sizes of the dataset 
+in order to be able to view the total execution time, memory consumption, network traffic, disk I/O, etc.
+This will help us greatly in that we focus to be able to improve an algorithm, since we will know
+the root of the problem. Some of these problems may be the following: \\
+\noindent If our cluster has a huge movement of network it can suppose a bottleneck
+for the data and we have to redesign the algorithm, if, on the contrary, our cluster
+is swapping memory, may need to add RAM to our worker nodes.\\
+
+The algorithms programmed using the MapReduce programming paradigm have been
+developed using the \textit{mrjob} library of the \textit{Python}\texttrademark programming language. 
+The rest of algorithms have been developed using Apache Spark, which is focused on the
+functional programming paradigm.
+It makes use of the open source libraries numpy, matplotlib and sklearn, as long as 
+they are useful for the purpose of development and the visualization of the data.
+\newline
+
+The end of the document is composed of a conclusion of everything studied in the same as
+some future lines in which this work can be helpful or even departure to future works related 
+to the subject of Big Data and machine learning in a distributed approach.
+\newline
+
+All the source code developed is available on my \href{https://github.com/davidRetana}{GitHub} page.
+\end{abstract}
+\selectlanguage{spanish}
+\setcounter{page}{9} %porque al cambiar de lenguaje se resetea el contador de paginas
