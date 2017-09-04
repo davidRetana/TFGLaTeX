@@ -1,3 +1,4 @@
+# Memoria
 _capitulo_capitulo.text.aux
 main.aux
 main.bbl
@@ -9,8 +10,20 @@ main.ind
 main.lof
 main.log
 main.lol
+main.lot
 main.out
 main.pdf
 main.synctex.gz
 main.tex~
 main.toc
+
+# Presentacion
+presentacion.aux
+presentacion.log
+presentacion.nav
+presentacion.out
+presentacion.pdf
+presentacion.snm
+presentacion.synctex.gz
+presentacion.toc
+presentacion.vrb
