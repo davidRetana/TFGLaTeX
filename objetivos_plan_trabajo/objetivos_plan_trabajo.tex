@@ -1,0 +1,65 @@
+
+\chapter*{Objetivos y plan de trabajo}\label{objetivos_plan_trabajo}
+\markboth{Objetivos y plan de trabajo}{} % para que la cabecera coincida bien con el capítulo
+\addcontentsline{toc}{chapter}{Objetivos y plan de trabajo}
+%%%%%%%%%%%%%%%% Objetivos %%%%%%%%%%%%%%%%%
+Con la realización de este proyecto se pretende conseguir desplegar un \textit{cluster} de máquinas instalando el
+\textit{software Hadoop} en ellas y posteriormente instalar el servicio de \textit{Spark} y la librería \textit{mrjob}
+de \textit{Python}. Para la realización de este objetivo se usara una herramienta llamada \textit{Cloudera Manager} 
+(ver: \autoref{apendix:cloudera}) que nos guiará en el proceso de instalación.
+\newline
+
+\subsubsection*{Objetivos}
+%\noindent De manera esquemática, los \textbf{objetivos} a conseguir son los siguientes:
+\begin{itemize}
+  \item Instalación de un \textbf{\textit{cluster Hadoop}} de máquinas virtuales.
+  \begin{itemize}
+    \item nivel físico: levantar en un servidor las máquinas virtuales con la imagen de \textit{centOS} personalizada.
+    \item nivel lógico o de \textit{software}: Instalación de \textit{Apache Hadoop}, \textit{Apache Spark} 
+          y \textit{mrjob}. Los servicios de \textit{Hadoop} y \textit{Spark} se desplegarán usando 
+          \textit{Cloudera Manager} mientras que la librería de \textit{mrjob} se instalará haciendo uso de 
+          \textit{pip}, el gestor de paquetes de \textit{Python}.
+  \end{itemize}
+  \item Desarrollo de algoritmos de \textbf{\textit{machine learning}} de manera distribuida en dicho \textit{cluster}.
+  \begin{itemize}
+    \item Algoritmos de aprendizaje supervisado.
+    \begin{itemize}
+      \item Regresión lineal (\textit{Spark}) y \textit{NaiveBayes} (\textit{MapReduce}).
+    \end{itemize}
+    \item Algoritmos de aprendizaje no supervisado.
+    \begin{itemize}
+      \item Detección de anomalías (\textit{MapReduce}) y \textit{K-Means} (\textit{Spark}).
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%% Plan de Trabajo %%%%%%%%%%%%%%%
+\subsubsection*{Plan de trabajo}
+La instalación de un \textit{cluster} desde 0 es un proceso complejo y que requiere de conocimientos tanto a nivel de 
+\textit{hadware} como a nivel de \textit{software} ya que su realización requiere de una infraestructura física 
+y una infraestructura lógica.\\
+La infraestructura física se realizará levantando varias máquinas virtuales desde un único servidor y en una red local
+de internet. Estas máquinas virtuales simularán máquinas físicas a efectos prácticos ya que cada una posee su propia
+dirección \textit{IP}, \textit{CPU}, memoria...
+Las imágenes de \textit{centOS} que correrán como sistema operativo se han modificado siguiendo los pasos explicados
+en \url{https://github.com/davidRetana/custom_centOS} para que puedan albergar un \textit{cluster}.
+\newline
+
+\noindent En la \textbf{\autoref{part:despliegue}} (\nameref{part:despliegue}) el procedimiento será el siguiente:\\
+Una vez las máquinas \textit{centOS} estén levantadas y funcionando correctamente en el servidor, comenzaremos la
+instalación del \textit{software Hadoop} en cada uno de los nodos mediante conexiones 
+\textit{SSH}\index{SSH}\footnote{\textit{Secure Shell}} (previo reparto de roles entre cada nodo, como se detalla en
+la \autoref{asignacion_roles_cluster}).
+Hecho esto, ya tendríamos un \textit{cluster} donde a continuación instalaremos el servicio de \textit{Spark} y la 
+librería \textit{mrjob}. Estos dos programas hacen de \textit{framework} de procesamiento y permiten utilizar
+toda la potencia de computo de nuestro \textit{cluster} previamente desplegado.
+\newline
+
+\noindent En la \textbf{\autoref{part:analisis_datos}} (\nameref{part:analisis_datos}) el procedimiento será el siguiente:\\
+Se hace una introducción al \textit{machine learning}: qué es, cómo encaja en el mundo del \textit{Big Data},
+por qué utilizarlo y por qué desarrollarlo de manera distribuida.\\
+Hecha esta pequeña introducción, el desarrollo de los algoritmos se dividen en dos grupos: aprendizaje supervisado
+y aprendizaje no supervisado. Se desarrollaran dos algoritmos por cada tipo de aprendizaje, uno usando el
+paradigma de programación \textit{MapReduce} y otro usando el paradigma funcional en el que se basa \textit{Spark}.
+
+
