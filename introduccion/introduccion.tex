@@ -2,7 +2,6 @@
 \markboth{Introducción}{} % para que la cabecera coincida bien con el capítulo
 \addcontentsline{toc}{chapter}{Introducción}
 
-% Motivación
 Vivimos en la era de los datos, cada día se producen mas y mas datos que
 necesitan ser almacenados y procesados para poder sacarles beneficio.
 En los últimos 10 años se ha generado mas información que el acumulado de años
@@ -26,28 +25,43 @@ por las máquinas tradicionales.\\
 Para solventar esta carencia, la solución ya no consiste en trabajar contra una sola máquina
 sino que consiste en agrupar máquinas y hacerlas trabajar en paralelo simulando que fueran una sola máquina.
 
-% Esquema del trabajo
-Este documento se estructura en 3 partes, una primera parte de introducción a Hadoop y despliegue,
-una segunda parte de análisis de datos donde se desarrollaran algoritmos de machine learning de manera distribuida, y una tercera y última parte con un apéndice de información útil acerca de sitios web 
-donde poner en practica los conocimientos adquiridos.
-Cada sección consta de una primera parte donde se explica la utilidad del algoritmo y sus casos de
-uso, a continuación una segunda parte donde se explica las matemáticas detrás del algoritmo y 
-finalmente una ultima parte donde se desarrolla el código de manera distribuida y la inclusión 
-del código fuente.
-\newline
-
-% Que me ha llevado a hacer este trabajo y objetivos que quiero conseguir
+% Que me ha llevado a hacer este trabajo y objetivos que quiero conseguir (por encima)
+\subsubsection*{Motivación para la realización de este trabajo}
 La motivación a la hora de realizar este trabajo ha sido la necesidad de desarrollar algoritmos 
 de \textit{machine learning} de manera paralela, ya que los sistemas tradicionales no soportan 
 el entrenamiento de estos algoritmos bien sea por falta de memoria o por falta de capacidad de computo.\\
+Los algoritmos de \textit{machine learning} se nutren de los datos por lo que cuanto más tengamos más
+preciso será nuestro modelo construido con dichos datos.
+
 Por esta razón, los objetivos que pretendo conseguir con este trabajo es la realización de estos 
 algoritmos utilizando las distintas herramientas existentes para el manejo de grandes volúmenes de 
 datos y el procesado de los mismos, entiéndase \textit{Hadoop}, \textit{MapReduce}, \textit{Spark}, etc.\\
-Se pretende realizar una introducción a todas estas herramientas creando un \textit{cluster} de 
-máquinas con \textit{Apache Hadoop}, instalando posteriormente la librería \textit{mrjob} de \textit{Python} e 
-instalando también el software \textit{Apache Spark}. Con estas 3 tecnologías será suficiente para 
-realizar los objetivos marcados y abrir unas líneas futuras de investigación para las cuales este 
-trabajo sea de ayuda.
+Con estas 3 tecnologías será suficiente para realizar los objetivos marcados y abrir unas líneas futuras 
+de investigación para las cuales este trabajo sea de ayuda.
+\newline
+
+A nivel personal, la motivación para realizar este trabajo
+
+% Esquema del trabajo
+\subsubsection*{Estructuración del documento}
+Este documento se estructura en 3 partes:
+\begin{itemize}
+  \item \autoref{part:despliegue} (\nameref{part:despliegue})
+  \item \autoref{part:analisis_datos} (\nameref{part:analisis_datos})
+  \item \autoref{part:apendice} (\nameref{part:apendice})
+\end{itemize}
+La \textbf{primera parte} consta de una introducción a \textit{Hadoop} y despliegue de un \textit{cluster} con el servicio
+complementario de \textit{Spark} y la librería \textit{mrjob} de \textit{Python}.\\
+La \textbf{segunda parte} consiste análisis de datos donde se desarrollaran algoritmos de 
+\textit{machine learning} de manera distribuida, tanto de aprendizaje supervisado como de aprendizaje no supervisado.\\
+La \textbf{tercera y última parte} consta de un apéndice de información útil acerca de sitios web 
+donde poner en practica los conocimientos adquiridos mediante competiciones y colaboración con otros equipos de
+científicos de datos. Además se habla de \textit{Cloudera} como proveedor de servicios de \textit{Big Data}.
+\newline
+
+Cada sección dentro de análisis de datos consta de una primera parte donde se explica la utilidad del algoritmo 
+y sus casos de uso, a continuación una segunda parte donde se explica las matemáticas detrás del algoritmo y 
+finalmente una ultima parte donde se desarrolla el código de manera distribuida con la inclusión del código fuente.
 
 \vspace*{1.5cm}
 
