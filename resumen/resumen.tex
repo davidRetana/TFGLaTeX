@@ -1,38 +1,27 @@
 \begin{abstract}
 En este trabajo se aborda el estudio de las tecnologías actuales para el tratamiento
-de grandes volumenes de datos, asi como la creación de un \textit{cluster} de máquinas 
-utilizando \textit{Apache Hadoop}\texttrademark y su utilización para desarrollar algoritmos
+de grandes volúmenes de datos, así como la creación de un \textit{cluster} de máquinas 
+utilizando \textit{Apache Hadoop}\texttrademark. Posteriormente se hace uso de él para desarrollar algoritmos
 de \textit{machine learning} de una manera distribuida, paralela, escalable y eficiente.
 Todas estas tecnologías son una parte del gran mundo que forma el \hyperref[big_data_def]{\textit{Big Data}}.
 \newline
 
-Se detalla el despliegue de un \textit{cluster} \textit{Hadoop} utilizando una herramienta gráfica 
-llamada \textit{Cloudera Manager}. Este software facilita enormemente el trabajo de desplegar un 
+Se detalla el despliegue de un \textbf{\textit{cluster Hadoop}} utilizando una herramienta gráfica 
+llamada \textbf{\textit{Cloudera Manager}}. Este software facilita enormemente el trabajo de desplegar un 
 \textit{cluster} ya que se gestiona automáticamente la monitorización de los nodos, la creación de 
 usuarios, ficheros de configuración y demás tareas.
 Cuando el tamaño del \textit{cluster} se vuelve grande o son muchos los servicios instalados en él,
-esta es la mejor opción para desplegarlo. Cloudera proporciona dos maneras para dicho despliegue
+esta es la mejor opción para desplegarlo. \textit{Cloudera} proporciona dos maneras para dicho despliegue
 que se explican de manera general en \autoref{apendix:cloudera}.
 \newline
 
 Este trabajo se enfoca también en desarrollar buenas prácticas en lo que a computación distribuida 
 se refiere y se comparan distintos enfoques para la resolución de un mismo problema.
 Estos enfoques permiten entender mejor los retos de la computación paralela y la depuración 
-de los algoritmos distribuidos.
-Los distintos enfoques a la hora de programar un algoritmo se basan en reducir los posibles cuellos 
-de botella que se puedan producir con los datos. Esto es, el uso de \textit{combiners} en trabajos 
-\textit{MapReduce}, ordenes que desencadenen \textit{shuffles}\footnote{movimiento de datos entre 
-nodos a través de la red} en \textit{Spark}, etc. 
-La escalabilidad de los algoritmos y el consumo de recursos de un proceso (memoria y \textit{CPU}) 
-también son estudiados.
-Al final de cada sección se ha incluido el código fuente de cada enfoque del problema y una tabla 
-comparativa de tiempos para evaluar la eficiencia del algoritmo desarrollado a media que el tamaño 
-del \textit{dataset} crece.
-\newline
-
-Los algoritmos de \textit{machine learning} se han desarrollado utilizando dos enfoques de programación 
-distribuida, bien sea usando el paradigma de programación \textit{MapReduce} o bien utilizando 
-el paradigma de programación funcional en el que esta orientado \textit{Spark}. \\
+de los algoritmos distribuidos de una manera general, no centrándose específicamente en el \textit{machine learning}.\\
+Los algoritmos de \textbf{\textit{machine learning}} se han desarrollado utilizando dos enfoques de programación 
+distribuida, bien sea usando el paradigma de programación \textbf{\textit{MapReduce}} o bien utilizando 
+el paradigma de programación funcional en el que esta orientado \textbf{\textit{Spark}}. \\
 La utilización de uno u otro enfoque depende en gran parte de la arquitectura del algoritmo, esto es, 
 para algoritmos iterativos es mas conveniente usar \textit{Spark} ya que permite persistir los datos en 
 memoria y por lo tanto reduce enormemente el tiempo de ejecución del algoritmo. Por el contrario, un 
@@ -41,16 +30,13 @@ una pasada al completo del \textit{dataset}, por lo que con una fase \textit{map
 \textit{reduce} es suficiente para calcular dichas variables.
 \newline
 
-A modo comparativo, se testean distintos diseños del algoritmo sobre distintos tamaños del conjunto 
-de datos con el fin de poder observar los tiempos de ejecución totales, el consumo de memoria, el 
-tráfico de red, la entrada y salida de disco, etc.
-Esto nos ayudará en gran medida en que centrarnos para poder mejorar un algoritmo, ya que sabremos 
-la raíz del problema.
-Algunos de esos problema pueden ser los siguientes:\\
-Si nuestro \textit{cluster} tiene un gran movimiento de red esto puede suponer un cuello de botella 
-para los datos y tal vez haya que rediseñar el algoritmo, si por el contrario nuestro \textit{cluster} 
-esta \textit{swapeando} memoria tal vez necesitemos añadir mas memoria \textit{RAM} a nuestros nodos 
-trabajadores.
+Se tendrá especial atención a la escalabilidad de los algoritmos y el consumo de recursos de un proceso 
+(memoria y \textit{CPU}) ya que un buen rendimiento del algoritmo es clave en la computación distribuida.
+Los distintos enfoques a la hora de programar un algoritmo se basan en reducir los posibles cuellos 
+de botella que se puedan producir con los datos. Esto es, el uso de \textit{combiners} en trabajos 
+\textit{MapReduce}, ordenes que desencadenen \textit{shuffles}\footnote{movimiento de datos entre 
+nodos a través de la red} en \textit{Spark}, etc.\\
+Al final de cada sección se ha incluido el \textbf{código fuente} de cada algoritmo desarrollado.
 \newline
 
 Los algoritmos programados usando el paradigma de programación \textit{MapReduce} han sido 
@@ -61,13 +47,7 @@ Se hace uso de las librerías \textit{open source} \textit{numpy}, \textit{scipy
 y la visualización de los datos.
 \newline
 
-El final del documento esta compuesto por una conclusión de todo lo estudiado en el mismo asi como 
-unas líneas futuras en las cuales este trabajo puede servir de ayuda o incluso marcar un punto de 
-partida a futuros trabajos relacionados con el tema de \textit{Big Data}, \textit{machine learning} 
-e incluso \textit{deep learning} en un enfoque distribuido.
-\newline
-
-Todo el código fuente desarollado se encuentra disponible en mi página de 
+Todo el código fuente desarrollado se encuentra disponible en mi página de 
 \href{https://github.com/davidRetana}{GitHub}
 
 \end{abstract}
