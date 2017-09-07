@@ -62,8 +62,8 @@ in a distributed, parallel, scalable and efficient way.
 All these technologies are a part of the big world that forms the \hyperref[big_data_def]{\textit{Big Data}}.
 \newline
 
-The deployment of a \textit{Hadoop cluster} is detailed using a graphical tool
-called \textit{Cloudera Manager}. This software greatly facilitates the work of deploying a
+The deployment of a \textbf{\textit{Hadoop cluster}} is detailed using a graphical tool
+called \textbf{\textit{Cloudera Manager}}. This software greatly facilitates the work of deploying a
 \textit{cluster} beacuse it automatically manages the monitoring of the nodes, the creation of
 users, configuration files and other tasks.
 When the size of the \textit{cluster} becomes large or many services are installed on it,
@@ -71,52 +71,41 @@ this is the best option to deploy it. Cloudera provides two ways for such deploy
 which are generally explained in \autoref{apendix:cloudera}.
 \newline
 
-This paper also focus on the development of good practices in what a distributed computing
-it is referred to and compared to other approaches to solving the same problem.
-These approaches allow a better understanding of the challenges of parallel computing and 
-debugging distributed algorithms.
-The different approaches to programming an algorithm are based on reducing possible bottlenecks
-that can be produced with the data. That is, the use of combinators in MapReduce jobs, orders to 
-trigger shuffle\footnote{Data transfer between nodes throught the network} in Spark, etc.
-The scalability of the algorithms and the resource consumption of a process (memory and CPU)
-they are also studied. \\
-At the end of each section, the source code for each approach to the problem has been included 
-and a comparative time table to evaluate the algorithm efficiency, developed while dataset size grows.
+This work also focuses on the development of good practices in what a distributed computing
+is referred to and compared to other approaches to solving the same problem.
+These approaches allow a better understanding of the challenges of parallel computing and debugging
+of the algorithms distributed in a general way, not focusing specifically on machine learning. \\
+\textbf{Machine learning} algorithms have been developed using distributed programming approaches, 
+either using the \textbf{\textit{MapReduce}} programming paradigm or using
+the functional programming paradigm in which \textbf{\textit{Spark}} is oriented. \\
+Using one or other approach depends to a great extent on the architecture of the algorithm, that is,
+for iterative algorithms it is more convenient to use \textit{Spark} since it allows to persist the data in
+memory and thereby greatly reduce the execution time of the algorithm. On the contrary, a
+algorithm as it can calculate the mean and the variance of a data set, does not require more than
+a complete pass of the \textit{dataset}, so with a map phase and another
+\textit{reduce} phase is sufficient to calculate these variables.
 \newline
 
-Machine learning algorithms have been developed using two distributed programming approaches, 
-either using the MapReduce programming paradigm or using the paradigm of functional programming 
-in which Spark is oriented.
-The use of one or the other approach depends on the architecture of the algorithm, that is,
-for iterative algorithms it is more convenient to use Spark since this persists the data in
-memory and therefore reduce the execution time of the algorithm. On the other way, an
-algorithm, for example calculate the mean and variance of a data set, requires only
-one complete pass of the dataset, so with one phase map and another reduce is enought 
-to calculate these variables.
+Special attention is given to the scalability of the algorithms and the resource consumption of a process
+(memory and CPU) since a good performance of the algorithm is a key part in distributed computing.
+The different approaches to programming an algorithm are based on reducing possible bottleneck
+that can be produced with the data. That is, the use of \textit{combiners} in \textit{MapReduce} jobs, 
+commands that trigger \textit{shuffles}\footnote{data movement between nodes through the network} in 
+\textit{Spark}, etc. \\
+At the end of each section the \textbf{source code} of each developed algorithm has been included.
 \newline
 
-By way of comparison, different algorithm designs are tested on the different sizes of the dataset 
-in order to be able to view the total execution time, memory consumption, network traffic, disk I/O, etc.
-This will help us greatly in that we focus to be able to improve an algorithm, since we will know
-the root of the problem. Some of these problems may be the following: \\
-\noindent If our cluster has a huge movement of network it can suppose a bottleneck
-for the data and we have to redesign the algorithm, if, on the contrary, our cluster
-is swapping memory, may need to add RAM to our worker nodes.\\
-
-The algorithms programmed using the MapReduce programming paradigm have been
+The algorithms programmed using the \textit{MapReduce} programming paradigm have been
 developed using the \textit{mrjob} library of the \textit{Python}\texttrademark programming language. 
-The rest of algorithms have been developed using Apache Spark, which is focused on the
+The remaining algorithms have been developed using \textit{Apache Spark}, which is focused on the
 functional programming paradigm.
-It makes use of the open source libraries numpy, matplotlib and sklearn, as long as 
-they are useful for the purpose of development and the visualization of the data.
-\newline
-
-The end of the document is composed of a conclusion of everything studied in the same as
-some future lines in which this work can be helpful or even departure to future works related 
-to the subject of Big Data and machine learning in a distributed approach.
+This report makes use of the open source libraries \textit{numpy}, \textit{scipy},
+\textit{matplotlib} and \textit{sklearn}, as long as it is useful for the purpose of development
+and the visualization of the data.
 \newline
 
 All the source code developed is available on my \href{https://github.com/davidRetana}{GitHub} page.
+
 \end{abstract}
 \selectlanguage{spanish}
 \setcounter{page}{8} %porque al cambiar de lenguaje se resetea el contador de paginas
