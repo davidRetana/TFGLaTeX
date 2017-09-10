@@ -31,12 +31,35 @@
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{animate} % para crear el gif de kmeans
+\usepackage{hyperref}
+%TODO revisar
+\hypersetup
+{
+    bookmarks=true,         % show bookmarks bar?
+    %unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    %pdftoolbar=true,        % show Acrobat’s toolbar?
+    %pdfmenubar=true,        % show Acrobat’s menu?
+    %pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={Fit},    % fits the width of the page to the window
+    pdftitle={Estudio comparativo de Algoritmos de machine learning e implementación en Hadoop},    % title
+    pdfauthor={David Retana Ribeiro},     % author
+    pdfsubject={Big data y machine learning},   % subject of the document
+    pdfkeywords={computacion paralela, apache hadoop, apache spark, machine Learning, big data, python, k means,
+               naive bayes, yarn, hdfs, cluster}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    %colorlinks=true,       % false: boxed links; true: colored links
+    %linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    %citecolor=green,        % color of links to bibliography
+    %filecolor=magenta,      % color of file links
+    %urlcolor=cyan           % color of external links
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITULO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title[Machine Learning y Big Data]{Estudio comparativo de algoritmos de machine learning e implementación en Hadoop}
 \author{David Retana Ribeiro}
-\institute[UCM]{Universidad Complutense de Madrid \\ \medskip \textit{davidret@ucm.es}}
+\institute[UCM]{Universidad Complutense de Madrid \\ \medskip \texttt{davidret@ucm.es}}
 \date{3 de Octubre de 2017}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -45,22 +68,39 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
+\begin{frame} % Portada
 \titlepage
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-\frametitle{Índice de contenido} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\begin{frame} % Indice de contenidos
+\frametitle{Índice de contenidos}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCCION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introducción}
+
+\begin{frame} % Introduccion a Big data
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{First Section}
+\begin{frame} % Como encajan Hadoop, mapreduce, spark y machine learning al big data
 
-\subsection{Subsection Example}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DESPLIEGUE HADOOP %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Despliegue de un \textit{cluster Hadoop}}
+
+\subsection{\textit{HDFS} y \textit{YARN}}
 
 \begin{frame}
 \frametitle{Paragraphs of Text}
@@ -83,6 +123,7 @@ Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. A
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\textit{MapReduce} y \textit{Spark}}
 
 \begin{frame}
 \frametitle{Blocks of Highlighted Text}
@@ -120,8 +161,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ul
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Second Section}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MACHINE LEARNING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Algoritmos de \textit{Machine Learning}}
 
 \begin{frame}
 \frametitle{Table}
@@ -140,6 +182,7 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Algoritmo de \textit{NaiveBayes}}
 
 \begin{frame}
 \frametitle{Theorem}
@@ -174,6 +217,7 @@ Uncomment the code on this slide to include your own image from the same directo
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Algoritmo de \textit{K-Means}}
 
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
 \frametitle{Citation}
@@ -182,6 +226,10 @@ An example of the \verb|\cite| command to cite within the presentation:\\~
 This statement requires citation \cite{p1}.
 \end{frame}
 
+\begin{frame} % kmeans gif
+  \animategraphics[loop, controls, width=\linewidth]{1} % {n} cuanto menor mas lento
+  {C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/kmeans_imagen}{0}{4}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
