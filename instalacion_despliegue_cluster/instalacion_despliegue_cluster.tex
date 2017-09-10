@@ -54,11 +54,11 @@ En nuestro caso, el reparto de roles queda así:
   \label{asignacion_roles_cluster}
 \end{table}
 
-% Instalación de java y demás requisitos antes de instalar el software (cloudera repo, bases de datos, selinux, ...)
+% Instalación de java y demás requisitos antes de instalar el software (cloudera repo, bases de datos, selinux...)
 Como pasos previos a la instalación de los servicios del \textit{cluster}, se deben configurar 
 ciertas propiedades del Sistema Operativo\index{Sistema Operativo} tales como parar el servicio \textit{iptables},
 instalación de \href{https://es.wikipedia.org/wiki/Network_Time_Protocol}{NTP} para la sincronización de relojes, 
-instalar el repositorio de \textit{Cloudera}, ...
+instalar el repositorio de \textit{Cloudera}...
 Además de todo esto, debemos instalar Java ya que \textit{Hadoop} lo requiere para poder funcionar.
 
 \clearpage
@@ -114,7 +114,7 @@ Sin embargo, este no es el objetivo del documento, y nos centraremos en instalar
 
 \section{Instalación de \textit{HDFS} y \textit{YARN}}\label{sec:instalacion_hdfs_yarn}
 
-En la máquina designada como Cloudera Manager instalamos el servicio de \textit{cloudera manager server}
+En la máquina designada como \textit{Cloudera Manager} instalamos el servicio de \textit{cloudera-manager-server}
 
 \begin{lstlisting}[language=bash, numbers=none]
 $ sudo yum install cloudera-manager-server
@@ -122,7 +122,7 @@ $ sudo yum install cloudera-manager-server
 
 Este comando nos instala el servicio en la máquina en cuestión. Una vez finalizado, se nos habrá creado el
 directorio \path{/usr/share/cmf} dentro del cual tenemos que lanzar un \textit{script} que nos configura la base de 
-datos que usa Cloudera Manager por debajo
+datos que usa \textit{Cloudera Manager} por debajo
 
 \begin{lstlisting}[language=bash, numbers=none]
 $ sudo /usr/share/cmf/schema/scm-prepare-database.sh <base_de_datos> <nombre_db> \
@@ -167,8 +167,8 @@ password:admin, de esta manera ya estamos dentro del asistente gráfico.
   %\caption[archivo \path{/etc/hosts}]{resultado del archivo \path{/etc/hosts}}
 \end{figure}
 
-Como se comento previamente, Cloudera Manager es un software gratuito pero en su versión Cloudera Express,
-sin embargo, tiene una versión de pago llamada Cloudera Enterprise con funciones avanzadas para la gestión del
+Como se comento previamente, \textit{Cloudera Manager} es un software gratuito pero en su versión \textit{Cloudera Express},
+sin embargo, tiene una versión de pago llamada \textit{Cloudera Enterprise} con funciones avanzadas para la gestión del
 \textit{cluster} además de soporte. Esta opción esta disponible durante un mes a modo de prueba gratuita.
 \newline
 
@@ -178,7 +178,7 @@ podamos tener diferentes versiones de un mismo software sin que entren en confli
 versión usar en cada momento.
 \newline
 
-Como Cloudera Manager necesita acceder a los nodos para desplegar paquetes de software e instalar agentes, necesita
+Como \textit{Cloudera Manager} necesita acceder a los nodos para desplegar paquetes de software e instalar agentes, necesita
 acceder por \textit{SSH} a las máquinas por lo que nos pedirá la contraseña de los nodos del \textit{cluster}.
 En este caso dicha contraseña deberá ser igual en todos los nodos.
 
@@ -222,21 +222,21 @@ dejarán los datos y habremos finalizado la instalación del \textit{cluster}.
 \end{figure}
 
 Si todo fue satisfactoriamente, deberemos ser redirigidos a la página principal de administración de
-Cloudera Manager. Esta página será el punto de partida para cualquier configuración que queramos hacer
+\textit{Cloudera Manager}. Esta página será el punto de partida para cualquier configuración que queramos hacer
 en el \textit{cluster}, así como añadir nuevos nodos, desplegar nuevos servicios, habilitar la alta
 disponibilidad en el \textit{cluster} (HA\index{HA} por sus siglas en inglés 
 \textit{High Availability}\footnote{Consiste en habilitar un segundo \textit{namenode} en el \textit{cluster} 
-para evitar que un fallo en el nodo \textit{namenode} deje fuera de servicio al \textit{cluster} entero.}), ...\\
+para evitar que un fallo en el nodo \textit{namenode} deje fuera de servicio al \textit{cluster} entero.})...\\
 Además permite obtener métricas del uso de \textit{CPU}, I/O de red y de disco, etc.
 
 \begin{figure}[!htpb]
   \centering
   \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/capturas_cm/Captura26.JPG}
-  \caption[Instantánea Cloudera Manager]{Instantánea de la pagina principal de Cloudera Manager}
+  \caption[Instantánea \textit{Cloudera Manager}]{Instantánea de la pagina principal de \textit{Cloudera Manager}}
 \end{figure}
 
 \subsection{Test del \textit{cluster} desplegado}\label{test_cluster_desplegado}
-Para comprobar el correcto funcionamiento del \textit{cluster} instalado con Cloudera Manager, vamos a subir
+Para comprobar el correcto funcionamiento del \textit{cluster} instalado con \textit{Cloudera Manager}, vamos a subir
 un archivo a \textit{HDFS}, veremos como se distribuye entre los nodos (en porciones de $128$ \textit{MB} por defecto) 
 y luego ejecutaremos un trabajo \textit{MapReduce} que es el motor por defecto que utiliza \textit{YARN v2}.
 
@@ -315,7 +315,7 @@ Donde nuevamente veremos una salida parecida a esta:
 
 Si nos vamos a un navegador y escribimos \path{<ip_resourcemanager>:8088}, veremos de una manera gráfica
 los trabajos que se están ejecutando en nuestro \textit{cluster}, el historial de trabajos subidos, la
-memoria utilizada, los contenedores asignados, ...\\
+memoria utilizada, los contenedores asignados...\\
 Llegados a este punto, ya tendremos un \textit{cluster} totalmente operativo con los servicios de
 \textit{HDFS} Y \textit{YARN} instalados correctamente.
 
@@ -335,7 +335,7 @@ Llegados a este punto, ya tendremos un \textit{cluster} totalmente operativo con
   \includegraphics[width=0.5\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/capturas_spark/Captura1.JPG}
 \end{wrapfigure}
 
-Para la instalación de \textit{Apache Spark}, desde la página principal de administración de Cloudera Manager
+Para la instalación de \textit{Apache Spark}, desde la página principal de administración de \textit{Cloudera Manager}
 seleccionamos la pestaña 'Agregar un servicio' en el desplegable de \textit{cluster}.
 En esta pestaña están disponible todos los servicios soportados por Cloudera y que por lo tanto son compatibles
 con nuestro \textit{cluster}.\\
@@ -358,7 +358,7 @@ autónomo, no requiere de ningún gestor de recursos del \textit{cluster}.}
 Una vez hecho esto, elegimos la máquina que hemos etiquetado como \textit{gateway} para desplegar el servicio
 de \textit{Spark} ya que será desde esta máquina donde subiremos nuestros trabajos 
 \textit{spark-submit}\index{Spark-submit} o \textit{pyspark}\index{Pyspark} al \textit{cluster}.
-Después de todo este proceso de instalación, nuestra pagina principal de Cloudera Manager debería lucir los 
+Después de todo este proceso de instalación, nuestra pagina principal de \textit{Cloudera Manager} debería lucir los 
 3 servicios que hemos instalado.
 
 \begin{figure}[!htpb]
@@ -407,7 +407,7 @@ Si la orden se completa, hemos instalado correctamente \textit{Spark} en nuestro
 
 \section*{Conclusión del despliegue}
 
-Esto concluye el despliegue de un \textit{cluster} realizado con Cloudera Manager, donde hemos instalado los
+Esto concluye el despliegue de un \textit{cluster} realizado con \textit{Cloudera Manager}, donde hemos instalado los
 servicios básicos de \textit{Hadoop} y además el motor de procesamiento \textit{Spark}.\\
 En el siguiente capítulo se comentará las diferencias entre los distintos enfoques de procesamiento y se
 explica en que consisten los \textit{frameworks} de \textit{MapReduce} y \textit{Spark}.
