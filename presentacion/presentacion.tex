@@ -32,11 +32,12 @@
 \usepackage{graphicx}
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{animate} % para crear el gif de kmeans
+\usepackage{listings} % para el codigo fuente
 \usepackage{hyperref}
 %TODO revisar
 \hypersetup
 {
-    bookmarks=true,         % show bookmarks bar?
+    %bookmarks=true,         % show bookmarks bar?
     %unicode=false,          % non-Latin characters in Acrobat’s bookmarks
     %pdftoolbar=true,        % show Acrobat’s toolbar?
     %pdfmenubar=true,        % show Acrobat’s menu?
@@ -85,14 +86,36 @@
 
 \section{Introducción}
 
-\begin{frame} % Introduccion a Big data
-
+\begin{frame} % Introduccion a Big data y machine learning
+  \begin{block}{Big Data}
+  Vivimos en la era de los datos, cada día se producen más y más datos  que necesitan ser almacenados y
+  procesados para poder sacarles partido.\\
+  El termino \textbf{\textit{Big Data}} nace como un concepto para hacer referencia a la incapacidad de 
+  los sistemas tradicionales de almacenar y procesar un conjunto masivo de datos.
+  \end{block}
+  
+  \begin{block}{Machine Learning}
+  El \textbf{\textit{machine learning}} es una rama de la inteligencia artificial que permite crear sistemas que 
+  aprendan automáticamente sin ser programados explícitamente para ello.\\
+  Debido a que el \textit{machine learning} se alimenta de los datos, cuantos más datos tengamos para
+  entrenar los modelos más preciosos serán estos, por lo que los términos \textit{Big Data} y \textit{machine learning}
+  están estrechamente relacionados.
+  \end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame} % Como encajan Hadoop, mapreduce, spark y machine learning al big data
-
+  \frametitle{Herramientas del Big Data}
+  Actualmente, existen diversas herramientas que nos permiten trabajar con las grandes cantidades de datos
+  manejadas en el \textit{Big Data}. \textit{Apache Hadoop} es el software base que nos permite desplegar
+  un cluster de máquinas sobre el que trabajar y desarrollar.\\
+  Además de \textit{Hadoop} existen diversas herramientas para numerosos propósitos como pueden ser almacenamiento,
+  procesamiento, bases de datos no relacionales (noSQL)...\\
+  Entre esas herramientas cabe destacar \textit{Cassandra}, \textit{Apache Spark}, \textit{Hive}, \textit{MongoDB}...
+  \includegraphics[width=0.33\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/cassandra_logo.png}%
+  \includegraphics[width=0.33\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/spark_logo.png}%
+  \includegraphics[width=0.33\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/mongodb_logo.png}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -102,17 +125,17 @@
 
 \subsection{\textit{HDFS} y \textit{YARN}}
 
-\begin{frame}
-\frametitle{Paragraphs of Text}
-Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
-
-Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
+\begin{frame}[fragile]
+\frametitle{HDFS}
+\begin{lstlisting}[language=bash, numbers=none, frame=single]
+$ hdfs dfs -put <path_archivo_local> <path_hdfs>
+\end{lstlisting}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Bullet Points}
+\frametitle{YARN v2 (\textit{MapReduce} incluido)}
 \begin{itemize}
 \item Lorem ipsum dolor sit amet, consectetur adipiscing elit
 \item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
@@ -123,21 +146,29 @@ Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. A
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{\textit{MapReduce} y \textit{Spark}}
 
-\begin{frame}
-\frametitle{Blocks of Highlighted Text}
-\begin{block}{Block 1}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-\end{block}
+\begin{frame} % imagen de topologia de un cluster Hadoop
 
-\begin{block}{Block 2}
-Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
-\end{block}
+\end{frame}
 
-\begin{block}{Block 3}
-Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-\end{block}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\textit{Spark}}
+
+\begin{frame}[fragile]
+\frametitle{\textit{Apache Spark}}
+
+\begin{lstlisting}[language=bash, numbers=none, frame=single]
+$ pyspark --master yarn-client
+\end{lstlisting}
+
+\includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/pyspark_shell.png}
+
+\begin{lstlisting}[language=bash, numbers=none, frame=single, showstringspaces=false]
+>>> rdd = sc.parallelize(range(1000))
+>>> n = rdd.count()
+>>> print("Numero de elementos: ", n)
+\end{lstlisting}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
