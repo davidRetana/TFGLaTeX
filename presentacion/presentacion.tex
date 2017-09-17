@@ -32,8 +32,15 @@
 \usepackage{graphicx}
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{animate} % para crear el gif de kmeans
+%\usepackage[usenames, dvipsnames]{xcolor} % para los colores
 \usepackage{listings} % para el codigo fuente
-\usepackage{hyperref}
+\lstset
+  {
+  %backgroundcolor=\color{},   % Indica el color de fondo
+  basicstyle=\footnotesize,
+  commentstyle=\color{green},      % Estilo de los comentarios
+  }
+\usepackage{hyperref} % para las referencias cruzadas
 %TODO revisar
 \hypersetup
 {
@@ -87,6 +94,7 @@
 \section{Introducción}
 
 \begin{frame} % Introduccion a Big data y machine learning
+  \frametitle{Introducción}
   \begin{block}{Big Data}
   Vivimos en la era de los datos, cada día se producen más y más datos  que necesitan ser almacenados y
   procesados para poder sacarles partido.\\
@@ -123,32 +131,52 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Despliegue de un \textit{cluster Hadoop}}
 
+\begin{frame} % imagen de topologia de un cluster Hadoop
+\frametitle{Topología de un cluster Hadoop}
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/hadoop_topology.jpg}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{\textit{HDFS} y \textit{YARN}}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile] % fragile permite añadir codigo con lstlisting
 \frametitle{HDFS}
+\begin{block}{Hadoop Distributed File System}
+Ejemplos de comandos de \textit{HDFS}:
 \begin{lstlisting}[language=bash, numbers=none, frame=single]
-$ hdfs dfs -put <path_archivo_local> <path_hdfs>
+$ # crea un directorio recursivamente
+$ hdfs dfs -mkdir -R <direccion_a_crear>
+$ # sube un archivo de local a HDFS
+$ hdfs dfs -put <path_archivo_local> <path_hdfs> 
+$ # Descarga un archivo de HDFS a local
+$ hdfs dfs -get <path_hdfs> <path_local> 
 \end{lstlisting}
+
+En un navegador escribimos: \path{<ip_namenode>:50070}
+
+\end{block}
+\includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/overview_cluster.png}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-\frametitle{YARN v2 (\textit{MapReduce} incluido)}
-\begin{itemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-\item Nam cursus est eget velit posuere pellentesque
-\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame} % imagen de topologia de un cluster Hadoop
-
+\begin{frame}[fragile]
+  \frametitle{YARN v2 (\textit{MapReduce} incluido)}
+  Lanzamiento de un trabajo \textit{MapReduce} en un \textit{cluster Hadoop}
+  \begin{lstlisting}[language=bash, numbers=none, frame=single]
+$ hadoop jar WordCount.jar WordCount \
+  <input_path> <output_path>
+  \end{lstlisting}
+  
+  En un navegador escribimos: \path{<ip_resource_manager>:8088}\\
+  De esta manera podemos ver los trabajos que están corriendo en nuestro \textit{cluster} y su progreso.
+  
+  \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/mapreduce_application.png}
+  
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -169,6 +197,13 @@ $ pyspark --master yarn-client
 >>> print("Numero de elementos: ", n)
 \end{lstlisting}
 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Cloudera Manager}
+  \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/cloudera_manager.png}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -195,6 +230,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ul
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MACHINE LEARNING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Algoritmos de \textit{Machine Learning}}
+
+\begin{frame}
+\frametitle{Reducción de tiempos}
+El desarrollo de algoritmos paralelos de \textit{machine learning}, debido a su carácter experimental
+necesitan ser entrenados para obtener el mejor ajuste de los parámetros. De esta manera, el cómputo
+paralelo se vuelve fundamental para reducir los tiempos de ejecución.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{Table}
@@ -224,7 +268,7 @@ $E = mc^2$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+\begin{frame}[fragile]
 \frametitle{Verbatim}
 \begin{example}[Theorem Slide Code]
 \begin{verbatim}
@@ -250,7 +294,7 @@ Uncomment the code on this slide to include your own image from the same directo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Algoritmo de \textit{K-Means}}
 
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+\begin{frame}[fragile]
 \frametitle{Citation}
 An example of the \verb|\cite| command to cite within the presentation:\\~
 
