@@ -6,19 +6,19 @@
 Con la realización de este proyecto se pretende conseguir desplegar un \textit{cluster} de máquinas instalando el
 \textit{software Hadoop} en ellas y posteriormente instalar el servicio de \textit{Spark} y la librería \textit{mrjob}
 de \textit{Python}. Para la realización de este objetivo se usara una herramienta llamada \textit{Cloudera Manager} 
-(ver: \autoref{apendix:cloudera}) que nos guiará en el proceso de instalación.
+(ver: \autoref{apendix:cloudera}) que nos guiará en el proceso de instalación. \\
+En cuanto a la parte de algoritmia, esta consistirá en desarrollar algoritmos paralelos de \textit{machine learning} 
+usando el \textit{cluster} construido anteriormente para testar su eficiencia. En total se desarrollarán 4 algoritmos,
+dos supervisados y dos no supervisados usando \textit{MapReduce} y \textit{Spark} como \textit{frameworks}.
 \newline
 
 \subsubsection*{Objetivos}
-%\noindent De manera esquemática, los \textbf{objetivos} a conseguir son los siguientes:
 \begin{itemize}
   \item Instalación de un \textbf{\textit{cluster Hadoop}} de máquinas virtuales.
   \begin{itemize}
     \item nivel físico: levantar en un servidor las máquinas virtuales con la imagen de \textit{centOS} personalizada.
     \item nivel lógico o de \textit{software}: Instalación de \textit{Apache Hadoop}, \textit{Apache Spark} 
-          y \textit{mrjob}. Los servicios de \textit{Hadoop} y \textit{Spark} se desplegarán usando 
-          \textit{Cloudera Manager} mientras que la librería de \textit{mrjob} se instalará haciendo uso de 
-          \textit{pip}, el gestor de paquetes de \textit{Python}.
+          y \textit{mrjob}.
   \end{itemize}
   \item Desarrollo de algoritmos de \textbf{\textit{machine learning}} de manera distribuida en dicho \textit{cluster}.
   \begin{itemize}
@@ -36,30 +36,31 @@ de \textit{Python}. Para la realización de este objetivo se usara una herramien
 %%%%%%%%%%%%%% Plan de Trabajo %%%%%%%%%%%%%%%
 \subsubsection*{Plan de trabajo}
 La instalación de un \textit{cluster} desde 0 es un proceso complejo y que requiere de conocimientos tanto a nivel de 
-\textit{hadware} como a nivel de \textit{software} ya que su realización requiere de una infraestructura física 
+\textit{hardware} como a nivel de \textit{software} ya que su realización requiere de una infraestructura física 
 y una infraestructura lógica.\\
 La infraestructura física se realizará levantando varias máquinas virtuales desde un único servidor y en una red local
 de internet. Estas máquinas virtuales simularán máquinas físicas a efectos prácticos ya que cada una posee su propia
 dirección \textit{IP}, \textit{CPU}, memoria...
-Las imágenes de \textit{centOS} que correrán como sistema operativo se han modificado siguiendo los pasos explicados
+Las imágenes de \textit{centOS} (\textit{Community ENTerprise Operating System}, distribución \textit{gnu/linux}) 
+que correrán como sistema operativo se han modificado siguiendo los pasos explicados
 en \url{https://github.com/davidRetana/custom_centOS} para que puedan albergar un \textit{cluster}.
 \newline
 
 \noindent En la \textbf{\autoref{part:despliegue}} (\nameref{part:despliegue}) el procedimiento será el siguiente:\\
 Una vez las máquinas \textit{centOS} estén levantadas y funcionando correctamente en el servidor, comenzaremos la
-instalación del \textit{software Hadoop} en cada uno de los nodos mediante conexiones 
-\textit{SSH}\index{SSH}\footnote{\textit{Secure Shell}} (previo reparto de roles entre cada nodo, como se detalla en
-la \autoref{asignacion_roles_cluster}).
+instalación del \textit{software Hadoop} en cada uno de los nodos mediante conexiones \textit{SSH}\index{SSH} 
+(\textit{Secure SHell}, protocolo criptográfico con conexiones cifradas para acceder a servidores remotos.)
+, previo reparto de roles entre cada nodo, como se detalla en la \autoref{asignacion_roles_cluster}.
 Hecho esto, ya tendríamos un \textit{cluster} donde a continuación instalaremos el servicio de \textit{Spark} y la 
 librería \textit{mrjob}. Estos dos programas hacen de \textit{framework} de procesamiento y permiten utilizar
 toda la potencia de computo de nuestro \textit{cluster} previamente desplegado.
 \newline
 
-\noindent En la \textbf{\autoref{part:analisis_datos}} (\nameref{part:analisis_datos}) el procedimiento será el siguiente:\\
-Se hace una introducción al \textit{machine learning}: qué es, cómo encaja en el mundo del \textit{Big Data},
-por qué utilizarlo y por qué desarrollarlo de manera distribuida.\\
-Hecha esta pequeña introducción, el desarrollo de los algoritmos se dividen en dos grupos: aprendizaje supervisado
-y aprendizaje no supervisado. Se desarrollaran dos algoritmos por cada tipo de aprendizaje, uno usando el
-paradigma de programación \textit{MapReduce} y otro usando el paradigma funcional en el que se basa \textit{Spark}.
+\noindent En la \textbf{\autoref{part:analisis_datos}} (\nameref{part:analisis_datos}) el plan consiste en hacer
+una pequeña introducción al \textit{machine learning}, para que sirve y por que utilizarlo conjuntamente con el 
+\textit{Big Data}. Para la realización de esta sección es necesario el trabajo realizado en la primera 
+ya que utiliza el \textit{cluster} desplegado para desarrollar los dos tipos de algoritmos estudiados: 
+aprendizaje supervisado y aprendizaje no supervisado. Estos algoritmos se intentarán escribir con una sintaxis 
+clara y concisa, y además, se realizarán de manera eficiente dentro de lo posible.
 
 

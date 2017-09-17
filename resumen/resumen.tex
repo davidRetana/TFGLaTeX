@@ -1,9 +1,10 @@
 \begin{abstract}
 En este trabajo se aborda el estudio de las tecnologías actuales para el tratamiento
 de grandes volúmenes de datos, así como la creación de un \textit{cluster} de máquinas 
-utilizando \textit{Apache Hadoop}\texttrademark. Posteriormente se hace uso de él para desarrollar algoritmos
-de \textit{machine learning} de una manera distribuida, paralela, escalable y eficiente.
-Todas estas tecnologías son una parte del gran mundo que forma el \hyperref[big_data_def]{\textit{Big Data}}.
+utilizando \textit{Apache Hadoop}\texttrademark. Posteriormente, se hace uso de él y de modernas técnicas 
+de programación paralela para desarrollar algoritmos de \textit{machine learning} de una manera 
+distribuida, escalable y eficiente. Todos estos conceptos y tecnologías se integran dentro de un área de 
+estudio heterodoxa que se suele denominar como \hyperref[big_data_def]{\textit{Big Data}}.
 \newline
 
 Se detalla el despliegue de un \textbf{\textit{cluster Hadoop}} utilizando una herramienta gráfica 
@@ -20,8 +21,8 @@ se refiere y se comparan distintos enfoques para la resolución de un mismo prob
 Estos enfoques permiten entender mejor los retos de la computación paralela y la depuración 
 de los algoritmos distribuidos de una manera general, no centrándose específicamente en el \textit{machine learning}.\\
 Los algoritmos de \textbf{\textit{machine learning}} se han desarrollado utilizando dos enfoques de programación 
-distribuida, bien sea usando el paradigma de programación \textbf{\textit{MapReduce}} o bien utilizando 
-el paradigma de programación funcional en el que esta orientado \textbf{\textit{Spark}}. \\
+paralela, usando el ya clásico paradigma de programación \textit{MapReduce},  o bien utilizando el paradigma 
+\textit{Spark}, más moderno y con una cierta orientación de programación funcional. \\
 La utilización de uno u otro enfoque depende en gran parte de la arquitectura del algoritmo, esto es, 
 para algoritmos iterativos es mas conveniente usar \textit{Spark} ya que permite persistir los datos en 
 memoria y por lo tanto reduce enormemente el tiempo de ejecución del algoritmo. Por el contrario, un 
@@ -40,15 +41,16 @@ Al final de cada sección se ha incluido el \textbf{código fuente} de cada algo
 \newline
 
 Los algoritmos programados usando el paradigma de programación \textit{MapReduce} han sido 
-desarrollados usando la librería \textit{mrjob} del lenguaje de programación \textit{Python}\texttrademark . El resto de algoritmos se han desarrollado utilizando \textit{Apache Spark}, que esta enfocado al 
-paradigma de programación funcional.
+desarrollados usando la librería \textit{mrjob} del lenguaje de programación \textit{Python}\texttrademark . El resto de algoritmos se han desarrollado utilizando el \textit{framework} \textit{Spark} mediante \textit{Python}, aunque
+también esta disponible en lenguajes como \textit{Java}, \textit{Scala} o \textit{R}.
 Se hace uso de las librerías \textit{open source} \textit{numpy}, \textit{scipy}, 
 \textit{matplotlib} y \textit{sklearn}, siempre que sean útiles para el propósito del desarrollo 
 y la visualización de los datos.
 \newline
 
 Todo el código fuente desarrollado se encuentra disponible en mi página de 
-\href{https://github.com/davidRetana}{GitHub}
+\href{https://github.com/davidRetana}{GitHub}.\\ 
+(\url{https://github.com/davidRetana})
 
 \end{abstract}
 
@@ -56,10 +58,11 @@ Todo el código fuente desarrollado se encuentra disponible en mi página de
 \setcounter{page}{7} %porque al cambiar de lenguaje se resetea el contador de paginas
 \begin{abstract}
 This paper deals with the study of current technologies for the treatment
-of large volumes of data, as well as the deployment of a cluster of machines
-using Apache Hadoop and its use to develop machine learning algorithms
-in a distributed, parallel, scalable and efficient way.
-All these technologies are a part of the big world that forms the \hyperref[big_data_def]{\textit{Big Data}}.
+of large volumes of data, as well as the deployment of a machine's cluster
+using Apache Hadoop. Afterwards, we will have use of this cluster and modern parallel programming tecniques 
+to develop machine learning algorithms in a distributed, scalable and efficient way.
+All of these concepts and technologies are integrated within a study area called 
+\hyperref[big_data_def]{\textit{Big Data}}.
 \newline
 
 The deployment of a \textbf{\textit{Hadoop cluster}} is detailed using a graphical tool
@@ -75,9 +78,9 @@ This work also focuses on the development of good practices in what a distribute
 is referred to and compared to other approaches to solving the same problem.
 These approaches allow a better understanding of the challenges of parallel computing and debugging
 of the algorithms distributed in a general way, not focusing specifically on machine learning. \\
-\textbf{Machine learning} algorithms have been developed using distributed programming approaches, 
-either using the \textbf{\textit{MapReduce}} programming paradigm or using
-the functional programming paradigm in which \textbf{\textit{Spark}} is oriented. \\
+\textbf{Machine learning} algorithms have been developed using parallel programming approaches, 
+either using the classic \textbf{\textit{MapReduce}} programming paradigm or using
+\textbf{\textit{Spark}} programming paradigm, more modern and functional programming oriented. \\
 Using one or other approach depends to a great extent on the architecture of the algorithm, that is,
 for iterative algorithms it is more convenient to use \textit{Spark} since it allows to persist the data in
 memory and thereby greatly reduce the execution time of the algorithm. On the contrary, a
@@ -97,14 +100,15 @@ At the end of each section the \textbf{source code} of each developed algorithm 
 
 The algorithms programmed using the \textit{MapReduce} programming paradigm have been
 developed using the \textit{mrjob} library of the \textit{Python}\texttrademark programming language. 
-The remaining algorithms have been developed using \textit{Apache Spark}, which is focused on the
-functional programming paradigm.
+The remaining algorithms have been developed using \textit{Spark} framework throught Python, although
+also Spark is available in other lenguages such as Java, Scala or R.
 This report makes use of the open source libraries \textit{numpy}, \textit{scipy},
 \textit{matplotlib} and \textit{sklearn}, as long as it is useful for the purpose of development
 and the visualization of the data.
 \newline
 
-All the source code developed is available on my \href{https://github.com/davidRetana}{GitHub} page.
+All the source code developed is available on my \href{https://github.com/davidRetana}{GitHub} page.\\
+(\url{https://github.com/davidRetana})
 
 \end{abstract}
 \selectlanguage{spanish}
