@@ -22,8 +22,14 @@ concepto nuevo. Adicionalmente se incluyen Veracidad y Valor como nuevos concept
 Hemos pasado de hablar en \textit{Gygabytes} o \textit{Terabytes}, a hablar 
 en \textit{Petabytes} o incluso \textit{Exabytes}, magnitudes muy por encima de las soportadas 
 por las máquinas tradicionales.\\
-Para solventar esta carencia, la solución ya no consiste en trabajar contra una sola máquina
-sino que consiste en agrupar máquinas y hacerlas trabajar en paralelo simulando que fueran una sola máquina.
+%Para solventar esta carencia, la solución ya no consiste en trabajar contra una sola máquina
+%sino que consiste en agrupar máquinas y hacerlas trabajar en paralelo simulando que fueran una sola máquina.
+Para solventar este problema, tradicionalmente se usaban supercomputadores para poder tratar con toda esta
+información, como por ejemplo el supercomputador \textit{MareNostrum} (\url{https://es.wikipedia.org/wiki/MareNostrum}). 
+Sin embargo esta es una opción bastante cara y compleja de mantener. Actualmente, la solución mas
+usada para la gestión de grandes volúmenes de datos es la construcción de \textit{cluster} de máquinas asequible
+(\textit{comodity hardware}\index{Comodity Hardware}), principalmente porque es una solución sencilla, barata y
+escalable.
 
 % Que me ha llevado a hacer este trabajo y objetivos que quiero conseguir (por encima)
 \subsubsection*{Motivación para la realización de este trabajo}
@@ -36,7 +42,7 @@ Estos sistemas funcionan muy bien pero solo en un conjunto pequeño de datos ya 
 crece, se vuelven incapaces de procesarlo. Esto es así porque dichos sistemas meten los datos en memoria para
 procesarlos por lo que la limitación aquí vendría en la \textit{CPU} y en la memoria máxima de la máquina en cuestión 
 donde se ejecute.\\
-Los algoritmos de \textit{machine learning} se nutren de los datos por lo que cuanto más tengamos más
+Los algoritmos de \textit{machine learning} se nutren de los datos por lo que cuantos más tengamos más
 preciso será nuestro modelo construido con dichos datos.
 
 Por esta razón, los objetivos que pretendo conseguir con este trabajo es la realización de estos 
