@@ -2,17 +2,10 @@
 \chapter{Computación paralela}
 La computación paralela consiste en dividir el flujo de procesamiento en instrucciones que se ejecutan 
 simultáneamente y de manera asíncrona con el fin de reducir los tiempos de ejecución de un programa.
-Es especialmente importante hoy en día debido a la gran cantidad de datos que se manejan en el \textit{Big data}.\\
+Es especialmente importante hoy en día debido a la gran cantidad de datos que procesan las aplicaciones 
+desarrolladas en el área del \textit{Big data}.\\
 Este enfoque de programación obliga a rediseñar los algoritmos, en el libro \cite{DBLP:books/cu/C2017}
 se encuentra una buena introducción al diseño de algoritmos paralelos.
-
-
-%En las tablas %\autoref{•}, \autoref{•}, \autoref{•}, \autoref{•}
-%%TODO autoref de arriba
-%se muestran los distintos tiempos transcurridos para entrenar un algoritmo de \textit{machine learning}
-%usando los enfoques que se comentan a continuación. Se puede observar cuando el tamaño del conjunto de datos
-%se hace grande, los algoritmos paralelos tardan bastante menos que los secuenciales o concurrentes, los cuales
-%demoran un gran tiempo.
 
 \section[Enfoques procesamiento]{Distintos enfoques de procesamiento}\label{sec:distintos_enfoques_procesamiento}
 A nivel de programación o código hay 3 enfoques de procesamiento de los datos:
@@ -61,7 +54,7 @@ solo nos da información de la máquina donde se ejecute.
 
 \section[Frameworks]{Frameworks de procesamiento paralelo}\label{sec:frameworks_procesamiento_paralelo}
 En este trabajo nos centraremos especialmente en dos \textit{frameworks}
-\footnote{\url{https://es.wikipedia.org/wiki/Framework}}: \textit{MapReduce} y \textit{Spark}. \\
+\footnote{\url{https://es.wikipedia.org/wiki/Framework}.}: \textit{MapReduce} y \textit{Spark}. \\
 Ambos son motores de procesamiento distribuido aunque con un diseño muy diferente, que dependiendo 
 de la naturaleza del problema a resolver será mas conveniente utilizar uno u otro.
 
@@ -79,7 +72,7 @@ de la naturaleza del problema a resolver será mas conveniente utilizar uno u ot
   \end{itemize}
   Adicionalmente se pueden incorporar mas fases para optimizar los trabajos \textit{MapReduce}, como por
   ejemplo la utilización de \textit{combiners}\index{Combiner}\footnote{fase reduce ejecutada localmente
-  en un nodo para reducir el coste del movimiento de datos a través de la red}.\\
+  en un nodo para reducir el coste del movimiento de datos a través de la red.}.\\
   \textit{MapReduce} esta incluido en \textit{YARN v2} como motor por defecto. Además, cuenta con implementaciones en 
   diversos lenguajes de programación como \textit{Java}, \textit{Scala} o \textit{Python}.\\
   Los algoritmos implementados en este trabajo se realizarán utilizando la librería \textit{mrjob} 
@@ -130,8 +123,9 @@ solo tendremos que lanzar un sencillo comando.\\
 $ sudo pip install mrjob
 \end{lstlisting}
 
-\textit{Pip}\footnote{\textit{Python Package Index}}, el gestor de paquetes de \textit{Python}, 
-se encargará de descargar todas las dependencias necesarias para su correcta instalación.
+\textit{Pip}\footnote{\textit{Python Package Index}, \url{https://pypi.python.org/pypi/pip}.}, 
+el gestor de paquetes de \textit{Python}, se encargará de descargar todas las dependencias
+ necesarias para su correcta instalación.
 
 \begin{figure}[!htpb]
   \centering
