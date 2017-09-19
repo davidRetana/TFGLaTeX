@@ -3,7 +3,7 @@ Los datos son una fuente de valor por lo que analizarlos y tomar decisiones en f
 convertido en algo esencial. Cada vez son mas las compañías autodenominadas 
 \textit{data-driven company}\index{Data-driven company}, es decir, empresas que toman decisiones de 
 futuro e inversión en función al análisis que hacen de sus datos.\\
-El \textit{machine learning} es el gran aliado de los datos ya que permite construir modelos sobre estos,
+El \textit{machine learning} se nutre de los datos ya que permite construir modelos sobre estos,
 que posteriormente se usarán para tomar dichas decisiones de futuro de la compañía. A modo de ejemplo, estas
 decisiones pueden ser: ¿Dónde construir un nuevo centro de datos?, ¿Cómo me anticipo a la posible baja de un
 cliente de mis servicios móviles?, ¿Cómo minimizo el coste de mantenimiento de las infraestructuras?...\\
@@ -25,13 +25,13 @@ Podemos clasificar los modelos de \textit{machine learning} en dos clases:
   patrones entre los datos de una misma clase para que cuando vea un dato sin etiquetar, este sea 
   capaz de asignarle una clase en función de los patrones aprendidos en la fase de entrenamiento.
   Unos ejemplos de esta clase de algoritmos serían: regresión lineal, regresión logística, 
-  maquina de vectores soporte, redes neuronales...
+  \textit{support vector machine}, redes neuronales...
   
   \item \textbf{Aprendizaje no supervisado}\index{Aprendizaje!no supervisado}: los datos pasados 
   al algoritmo no llevan asignados una etiqueta, es el propio algoritmo el que debe aprender 
   patrones similares entre todo el conjunto de datos de entrada.\\
   Algunos ejemplos de aprendizaje no supervisado serían: \textit{KMeans}, \textit{Principal Component Analysis}, 
-  \textit{K Nearest Neighbourds}...
+  \textit{k-nearest neighbors}...
 \end{itemize}
 
 Aunque el concepto de \textit{machine learning} apareció a mediados del siglo $XX$, es ahora cuando su evolución
@@ -43,9 +43,8 @@ tiempo de procesamiento. Esta afirmación es matizable, ya que en ciertos casos
 la inclusión de mas datos a tu algoritmo no aumentara su desempeño.
 \newline
 
-El ML tiene campos de aplicación muy diversos tales como reconocimiento del habla, robótica,
-desarrollo de motores de búsqueda y motores de recomendación, detección de fraude...\\
-Hoy en día es un campo con un gran crecimiento y muchas empresas invierten activamente en él.
+El ML tiene campos de aplicación muy diversos tales como procesamiento del lenguaje natural, robótica,
+desarrollo de motores de búsqueda y recomendación, detección de fraude...\\
 
 \section[\textit{Machine Learning} distribuido]{¿Por qué desarrollar \textit{machine learning} de manera distribuida?}
 En la era de la generación masiva de datos, el mejor aliado del \textit{Big Data} es el \textit{machine learning}.
@@ -72,15 +71,15 @@ paralelos que den solución a estos problemas.
 
 En el artículo de investigación \cite{NIPS2006_3150}, se puede comprobar los efectos de la paralelización
 (en cuanto a términos de rendimiento) de algunos algoritmo de \textit{machine learning}. Esto pone de
-manifiesto mas aun si cabe la necesidad de distribuir los cómputos entre varias máquinas. Como se ve en
+manifiesto más aún si cabe la necesidad de distribuir los cómputos entre varias máquinas. Como se ve en
 la \autoref{sec:ml_pipeline}, el proceso de creación de un modelo de \textit{machine learning} se basa en
 la prueba y error por lo que normalmente es necesario entrenar el modelo sobre el mismo conjunto de datos
-varias veces, hasta que se obtengan las métricas deseadas. Esto aumenta mas aun si cabe el tiempo necesario
+varias veces, hasta que se obtengan las métricas deseadas. Esto aumenta más aún si cabe el tiempo necesario
 de entrenamiento, que en entornos secuenciales pueden llegar a ser inviables.
 \newline
 
-En el \autoref{chap:implementacion_paralela} se estudiará, analizará e implementará algunos de los algoritmos mas populares
-y usados hoy en día de \textit{machine learning}.
+En el \autoref{chap:implementacion_paralela} se estudiará, analizará e implementará de manera paralela 
+algunos de los algoritmos mas populares y usados hoy en día de \textit{machine learning}.
 
 \section{Machine learning pipelines}\label{sec:ml_pipeline}
 El desarrollo de un modelo de \textit{machine learning} pasa por una serie de fases o procesos de desarrollo,
@@ -107,7 +106,7 @@ prepararlos para ser consumidos por el modelo matemático.
 
 Posteriormente, en la mayoría de los casos es necesario escalar los datos para un desempeño óptimo, 
 debido a que si no lo hacemos, las características de los datos con un valor numérico mas alto 
-tendrán mas peso en la función objetivo. Este escalamiento previo es necesario en modelos como 
+tendrán mas peso en la función objetivo. Este escalado previo es necesario en modelos como 
 las redes neuronales o la regresión logística.
 
 \clearpage
@@ -117,10 +116,10 @@ las redes neuronales o la regresión logística.
 \begin{enumerate}
   \item \textbf{Preprocesamiento}
   \begin{enumerate}
-    \item Limpieza y purga: quitar o rellenar registros vacíos, tratamiento de nules 
+    \item Limpieza y purga: quitar o rellenar registros vacíos, tratamiento de valores nulos 
           y $N/A$, convenciones en formato de fechas...
     \item \textit{Feature Engineering}\index{Feature engineering} convertir variables categóricas a numéricas, 
-          estandarización de los datos para tener media=0 y desviación típica=1...
+          estandarización o escalado de los datos...
     \item División de los datos: dividir el conjunto de datos en conjunto de entrenamiento y 
           conjunto de test (generalmente en proporciones $70 - 30\%$ o similar).
   \end{enumerate}
@@ -128,7 +127,7 @@ las redes neuronales o la regresión logística.
   \item \textbf{Procesamiento}
   \begin{enumerate}
     \item Elección de modelo que mejor se ajuste a nuestro problema 
-          (\textit{SVM}\footnote{\textit{Support Vector Machine}}, Redes Neuronales, etc)
+          (\textit{Support Vector Machine}, Redes Neuronales, regresión lineal, etc.)
     \item Entrenamiento: \textit{Hyperparameter tuning}\index{Hyperparameter tuning}, 
           es decir, ajuste de los parámetros variables del modelo (regularización, grado, tolerancia...).
     \item Testar el modelo con el conjunto de datos de test. Esto nos arroja las métricas necesarias
@@ -145,8 +144,9 @@ las redes neuronales o la regresión logística.
 \end{enumerate}
 \end{framed}
 
-Debido a que el proceso de creación de un modelo de \textit{machine learning} no es una ciencia exacta o no
-hay unas reglas universales, el desarrollo se basa en la experimentación a base de prueba y error.
+A pesar de que las fórmulas matemáticas en las que se apoyan los modelos de \textit{machine learning} son
+exactas, el proceso de creación de un modelo no es una ciencia exacta o no hay unas reglas universales. 
+El desarrollo se basa en la experimentación a base de prueba y error sobre el conjunto de datos de entrenamiento.
 Si las métricas que obtenemos al entrenar un modelo no son las deseadas, no hay un teorema que nos indique
 exactamente donde se puede mejorar el modelo, debemos ser nosotros como programadores los que tengamos que
 decidir que hacer.\hfill \break
