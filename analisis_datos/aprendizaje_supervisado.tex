@@ -85,16 +85,13 @@ $ spark-submit --master yarn-client LinearRegression.py
 
 \clearpage
 
-%TODO graficas del rendimiento del algoritmo
-
-
 \subsection{Naive-Bayes}
 Un clasificador \textbf{NaiveBayes}\index{NaiveBayes} es un clasificador probabilístico que se apoya en el 
 \textit{Teorema de Bayes} para clasificar las entradas.
 Es un modelo que asume que las características de las variables de entrada son independientes 
-entre si, esto es, el valor de una cierta variable no influye para nada en el valor de otra.\\
+entre sí, esto es, el valor de una cierta variable no influye para nada en el valor de otra.\\
 La idea general detrás del algoritmo es calcular la media y la varianza de cada clase y cada característica.
-Una vez realizado esto, se pueden utilizar los valores obtenidos para predecir la clase de un nuevo 
+Una vez realizado ésto, se pueden utilizar los valores obtenidos para predecir la clase de un nuevo 
 dato de entrada. El modelo lo etiquetará con la clase que mas se parezca de las vistas en el 
 conjunto de entrenamiento.
 \newline
@@ -166,5 +163,3 @@ $ python NaiveBayes.py <input_file> [-r hadoop]
 \end{lstlisting}                
                     
 \clearpage
-
-%TODO graficas del rendimiento del algoritmo
