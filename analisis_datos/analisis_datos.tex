@@ -1,6 +1,6 @@
 \chapter{Machine Learning}
 Los datos son una fuente de valor por lo que analizarlos y tomar decisiones en función a estos se ha
-convertido en algo esencial. Cada vez son mas las compañías autodenominadas 
+convertido en algo esencial. Cada vez son más las compañías autodenominadas 
 \textit{data-driven company}\index{Data-driven company}, es decir, empresas que toman decisiones de 
 futuro e inversión en función al análisis que hacen de sus datos.\\
 El \textit{machine learning} se nutre de los datos ya que permite construir modelos sobre estos,
@@ -36,11 +36,11 @@ Podemos clasificar los modelos de \textit{machine learning} en dos clases:
 
 Aunque el concepto de \textit{machine learning} apareció a mediados del siglo $XX$, es ahora cuando su evolución
 ha crecido en importancia debido al aumento de la capacidad de computo de los ordenadores.
-Lo esencial en ML son los datos, los modelos se alimentan de ellos y es por lo que cuantos mas
+Lo esencial en ML son los datos, los modelos se alimentan de ellos y es por lo que cuantos más
 datos tengamos a disposición, más preciso será nuestro modelo entrenado a coste de un mayor
-tiempo de procesamiento. Esta afirmación es matizable, ya que en ciertos casos 
+tiempo de procesamiento (\cite{DBLP:books/lib/Bishop07}). Esta afirmación es matizable, ya que en ciertos casos 
 (ver: \url{https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff})
-la inclusión de mas datos a tu algoritmo no aumentara su desempeño.
+la inclusión de más datos a tu algoritmo no aumentara su desempeño.
 \newline
 
 El ML tiene campos de aplicación muy diversos tales como procesamiento del lenguaje natural, robótica,
@@ -164,9 +164,9 @@ En la \autoref{ml_pipeline} se muestra el flujo de desarrollo de un proyecto de 
 
 
 \chapter[Implementación paralela]{Implementación paralela de algoritmos}\label{chap:implementacion_paralela}
-En este capítulo se implementarán algunos de los algoritmos mas populares de \textit{machine learning} 
+En este capítulo se implementarán algunos de los algoritmos más populares de \textit{machine learning} 
 pero con un enfoque distribuido, con el fin de minimizar los tiempos de ejecución a medida que
-el \textit{dataset} se vuelve mas grande.
+el \textit{dataset} se vuelve más grande.
 Cada sección consistirá en explicar de una manera breve y concisa la problemática a estudiar, 
 el algoritmo a desarrollar, exponer el código fuente del algoritmo en paralelo y por último se mostrará
 una gráfica comparativa de tiempos usando distintos enfoques para el mismo problema.
@@ -182,7 +182,7 @@ Un dato de entrenamiento sera un vector fila donde cada componente del vector se
 de dicho dato. A cada dato del conjunto de entrenamiento se le denotara con la letra $x$ y un 
 superíndice, mientras que las características se denotaran con la letra $x$ y subíndices. 
 
-En caso de que el dato lleve aparejado una clase a la que pertenece, esta será denotada con la letra 
+En caso de que el dato lleve aparejado una clase a la que pertenece, ésta será denotada con la letra 
 $y$. Así pues, para un primer ejemplo de entrenamiento (supervisado) sería:
 $$ x^{(1)}=(\underbrace{x^{(1)}_1, x^{(1)}_2, \cdots, x^{(1)}_n}_{\text{n características}}); y^{(1)} $$
 
