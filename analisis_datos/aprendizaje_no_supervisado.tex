@@ -89,6 +89,17 @@ en ese conjunto de datos
 \begin{lstlisting}[language=bash, numbers=none]
 $ python ComputeMeanVar.py <input_file> [-r hadoop]
 \end{lstlisting}
+
+La elección de \textit{MapReduce} para desarrollar este algoritmo ha sido debido a que para calcular la media y 
+la varianza de un conjunto de datos, solo es necesario un escaneo completo del \textit{dataset}. Como se ve
+gráficamente en la \autoref{mapReduce_wordcount}, en la fase map se produce el parseo de los datos donde cada línea
+se divide separando los campos por coma (\textit{,}). Los valores emitidos son: la posición del campo ($i$) como clave
+y el valor del campo ($fields[i]$) y un 1 como valor. Este 1 sirve para hacer un conteo de los datos en la fase 
+\textit{reduce}.\\
+En dicha fase \textit{reduce}, se itera sobre los valores recibidos en la fase \textit{map} y se descompone el calculo
+de la media en 2 variables aparte de crear otra variable $m$ que será un contador de los registros totales por cada campo.
+Una vez terminado la iteración del \textit{for}, se utilizan las variables \textit{sum\_features} y 
+\textit{sum\_features\_squared} para calcular la media $\mu_j$ y la varianza $\sigma^2$.
   
 \newpage
 
@@ -99,7 +110,7 @@ en distintos conjuntos o \textit{clusters}\footnote{Notese que no se debe confun
 palabra \textit{cluster} para hacer referencia a un \textit{cluster} de maquinas, o cuando se usa 
 para referirnos a un conjunto de datos agrupados} 
 coherentes, esto es, los puntos dentro de una mismo \textit{cluster} son mas parecidos entre sí 
-que los puntos de otro \textit{cluster} cualquiera.
+que los puntos de otro \textit{cluster} cualquiera.\\
 \newline
 
 Nuestros datos de entrada son puntos $x^{(i)} \in \mathds{R}^n$ y un cierto numero $k$ de 
