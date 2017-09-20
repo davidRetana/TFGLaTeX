@@ -19,7 +19,6 @@
 
 \usepackage[usenames, dvipsnames]{xcolor} % usenames y dvipsnames permite usar los colores predefinidos
 \definecolor{gray97}{gray}{.97}
-%\definecolor{gray75}{gray}{.75}
 \definecolor{gray45}{gray}{.45}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,7 +64,6 @@
   commentstyle=\color{gray45},      % Estilo de los comentarios
   deletekeywords={...},             % Si se quiere eliminar palabras clave del lenguaje
   escapeinside={\%*}{*)},           % Si quieres incorporar LaTeX dentro del propio código
-  %escapeinside={\textbackslash}{*)},           % Si quieres incorporar LaTeX dentro del propio código
   frame=shadowbox,	                % Añade un marco al código
   keepspaces=true,                  % Mantiene los espacios en el texto (identacion) (puede necesitar columns=flexible).
   keywordstyle=\color{blue}\bfseries, % estilo de las palabras clave
@@ -87,17 +85,6 @@
 % minimizar fragmentado de listados
 \lstnewenvironment{listing}[1][]
    {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
-
-% estilo consola linux
-%\lstdefinestyle{consola}
-%   {
-%   language=bash,
-%   %basicstyle=\scriptsize\bf\ttfamily,
-%   basicstyle=\footnotesize\bf\ttfamily,
-%   %basicstyle=\small\bf\ttfamily,
-%   backgroundcolor=\color{gray75},
-%   escapeinside={\%*}{*)},
-%   }
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -183,22 +170,16 @@ heightrounded, marginparwidth=2.5cm, marginparsep=0.3cm]{geometry}  % estilo de 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
-%$\ $
 \thispagestyle{empty} % para que no se enumere esta pagina y no tenga header ni footer
 \null\vfill
-%\noindent
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% LICENCIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
-%$\ $
 \thispagestyle{empty} % para que no se enumere esta pagina
 \null\vfill
-%\noindent
-
-%\pagenumbering{roman}
 
 \textcopyright \hspace{0.3cm} Copyright $2017$ David Retana Ribeiro\\
 
@@ -206,7 +187,6 @@ heightrounded, marginparwidth=2.5cm, marginparsep=0.3cm]{geometry}  % estilo de 
   \centering \url{https://creativecommons.org/licenses/by-sa/3.0/es/}
   \href{https://creativecommons.org/licenses/by-sa/3.0/es/}
        {\includegraphics[width=0.3\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/cc-by-sa.png}}
-  %\caption*{\url{https://creativecommons.org/licenses/by-sa/3.0/es/}}
 \end{wrapfigure}
 \noindent Las imágenes contenidas en este documento \\
 así como el código fuente y la información \\
@@ -252,7 +232,6 @@ bajo una licencia \textit{Creative Commons}.
 
 \begingroup % para agruparlo con lo de arriba en la misma pagina
   \let\clearpage\relax
-  %\cleardoublepage
   \addcontentsline{lol}{chapter}{Índice de códigos fuente} % para que aparezca en el indice de contenidos
   \lstlistoflistings % indice de codigos fuente
 \endgroup
