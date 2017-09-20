@@ -124,7 +124,7 @@ condicionadas que servirán al algoritmo para realizar sus predicciones.
 
 \begin{figure}[!htpb]
   \centering
-  \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/naiveBayes_men_women.png}
+  \includegraphics[width=0.5\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/naiveBayes_men_women.png}
   \caption[Naive Bayes clasificación]{Clasificación entre hombres y mujeres}
   \label{men_women_boundary}
 \end{figure}
@@ -133,8 +133,6 @@ Debido a la simplicidad de los cálculos que usa para entrenarse, \textit{NaiveB
 en conjuntos de datos muy grandes dando lugar a modelos muy precisos.\\
 Sin embargo, como todo modelo, tiene sus ventajas e inconvenientes que hacen de \textit{NaiveBayes} un modelo 
 propicio para unos determinados tipos de problemas.
-
-\clearpage
 
 \begin{itemize}
   \item Ventajas:
@@ -160,6 +158,18 @@ propicio para unos determinados tipos de problemas.
                   
 \begin{lstlisting}[language=bash, numbers=none]
 $ python NaiveBayes.py <input_file> [-r hadoop]
-\end{lstlisting}                
+\end{lstlisting}
+
+Para el desarrollo de este código se ha elegido el \textit{framework MapReduce} debido a que la arquitectura del
+algoritmo es altamente paralelizable, esto es consecuencia de la asociatividad de las operaciones que se calculan.\\
+En la fase \textit{map} se parsea la línea y se separa en campos (divididos por coma), las características se 
+asignan a la variable $x$ y el último campo es la clase, asignada a la variable $y$.\\
+Como clave se emite una tupla que tiene por valor la clase ($y$) y la posición del campo ($i$), mientras que
+como valor se emite otra tupla que contiene el valor del propio campo ($x[i]$) y un 1 que servirá para hacer
+un conteo de los datos. Esta elección ha sido así ya que se consigue la máxima paralelización al dividir las 
+claves (\textit{key}) en tantas como campos tengan los registros.\\
+En la fase \textit{reduce} se crean 3 variables: $m$, $sum\_features$ y $sum\_features\_squared$. La primera sirve
+para hacer la agregación del conteo de registros, la segunda y tercera sirven como variables auxiliares para 
+posteriormente calcular la media $\mu_j$ y la varianza $\sigma^2$.
                     
 \clearpage
