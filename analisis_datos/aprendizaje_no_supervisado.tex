@@ -100,6 +100,13 @@ En dicha fase \textit{reduce}, se itera sobre los valores recibidos en la fase \
 de la media en 2 variables aparte de crear otra variable $m$ que será un contador de los registros totales por cada campo.
 Una vez terminado la iteración del \textit{for}, se utilizan las variables \textit{sum\_features} y 
 \textit{sum\_features\_squared} para calcular la media $\mu_j$ y la varianza $\sigma^2$.
+\newline
+
+Para el despliegue de la aplicación, se puede hacer de manera local (usado principalmente para depuración del código)
+o de manera distribuida haciendo uso de un \textit{cluster Hadoop} para que la computación se produzca en paralelo
+(\textit{-r hadoop}). Este último modo de despliegue sube el archivo \path{input_file} a \textit{HDFS} para su 
+posterior ejecución con \textit{MapReduce}. También se puede indicar que el archivo ya se encuentra en \textit{HDFS}
+poniendo delante el prefijo de hdfs en el path: \path{hdfs://<input_file_in_hdfs>}
   
 \newpage
 
@@ -110,7 +117,7 @@ en distintos conjuntos o \textit{clusters}\footnote{Notese que no se debe confun
 palabra \textit{cluster} para hacer referencia a un \textit{cluster} de maquinas, o cuando se usa 
 para referirnos a un conjunto de datos agrupados} 
 coherentes, esto es, los puntos dentro de una mismo \textit{cluster} son mas parecidos entre sí 
-que los puntos de otro \textit{cluster} cualquiera.\\
+que los puntos de otro \textit{cluster} cualquiera.
 \newline
 
 Nuestros datos de entrada son puntos $x^{(i)} \in \mathds{R}^n$ y un cierto numero $k$ de 
@@ -185,7 +192,28 @@ $ # master puede ser local[*] o yarn-client
 $ spark-submit --master yarn-client KMeansSpark.py
 \end{lstlisting}
 
-                
-%TODO INCLUIR UNA TABLA CON EL DESEMPEÑO DEL ALGORITMO PARA DISTINTOS TAMAÑOS DEL DATASET
+Para el desarrollo de este código se ha elegido el \textit{framework Spark} debido principalmente a que el algoritmo
+de \textit{K-Means} es un algoritmo iterativo los mismos datos para realizar los computos, por lo que con la capacidad
+de \textit{Spark} de cachear los datos en memoria, los tiempos de ejecución se reducirán considerablemente.
+\newline
+
+Los datos de entrada del algoritmo es un \textit{RDD} que contiene como registros objetos \textit{numpy arrays}.
+Lo primero que se hace es cachear los datos en memoria y a continuación inicializar los centroides en posiciones
+aleatoria de los datos de entrada.\\
+Dentro del bucle \textit{while}, la variable \textit{points\_clusterized} contiene un mapeo de los datos originales
+a una tupla que contiene el centroide más cercano al punto $p$ en cuestión y un 1 que permite realizar posteriormente
+el conteo de los puntos totales. La variable \textit{clusters\_set} realiza una agregación que suma los puntos de
+entrada y los unos anteriores para realizar la media de cada \textit{cluster} de puntos.\\
+La variable \textit{new\_centroids} realiza en primer lugar un mapeo de los valores para calcular la división 
+de la suma de los puntos y el conteo, de esta manera se obtienen los nuevos centroides que se guardan en la variable
+\textit{new\_centroids}. Por último, se calcula la distancia entre los nuevos centroides y los anteriores con el fin
+de calcular la distancia para el criterio de parada (del bucle \textit{while}).\\
+Las iteraciones se detendrán cuando la distancia entre los centroides de dos iteraciones consecutivas sea menor
+que un cierto $\epsilon$ prefijado (o cuando se superen las máximas iteraciones permitidas).
+\newline
+
+El modo de despliegue de la aplicación depende de si como \textit{master} ponemos que se ejecute en local 
+(\textit{local[*]}) o en distribuido (\textit{yarn-client}). El primero no distribuye ningún cálculo en absoluto
+mientras que el segundo es un cliente del gestor de recursos del \textit{cluster}, \textit{YARN}.
 
 \newpage
