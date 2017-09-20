@@ -130,10 +130,6 @@ $ sudo /usr/share/cmf/schema/scm-prepare-database.sh <base_de_datos> <nombre_db>
 
 A modo de ejemplo:
 
-%\begin{listing}[style=consola, numbers=none, escapeinside={\textbackslash}]
-%\$ sudo /usr/share/cmf/schema/scm-prepare-database.sh mysql cloudera root training
-%\end{listing}
-
 \begin{lstlisting}[language=bash, numbers=none]
 $ sudo /usr/share/cmf/schema/scm-prepare-database.sh mysql cloudera root training
 \end{lstlisting}
@@ -163,7 +159,6 @@ password:admin, de esta manera ya estamos dentro del asistente gráfico.
 \begin{figure}[!htpb]
   \centering
   \includegraphics[scale=0.5]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/capturas_cm/Captura1.JPG}
-  %\caption[archivo \path{/etc/hosts}]{resultado del archivo \path{/etc/hosts}}
 \end{figure}
 
 Como se comento previamente, \textit{Cloudera Manager} es un software gratuito pero en su versión \textit{Cloudera Express},
@@ -186,7 +181,6 @@ En este caso dicha contraseña deberá ser igual en todos los nodos.
 \begin{figure}[!htpb]
   \centering
   \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/capturas_cm/Captura8.JPG}
-  %\caption[archivo \path{/etc/hosts}]{resultado del archivo \path{/etc/hosts}}
 \end{figure}
 
 A continuación se comenzará a descargar los paquetes de código y distribuirlos por las máquinas
@@ -194,7 +188,6 @@ A continuación se comenzará a descargar los paquetes de código y distribuirlo
 \begin{figure}[!htpb]
   \centering
   \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/capturas_cm/Captura11.JPG}
-  %\caption[archivo \path{/etc/hosts}]{resultado del archivo \path{/etc/hosts}}
 \end{figure}
 
 Si todo funciona correctamente deberemos ver una pantalla como la siguiente:
@@ -202,7 +195,6 @@ Si todo funciona correctamente deberemos ver una pantalla como la siguiente:
 \begin{figure}[!htpb]
   \centering
   \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/capturas_cm/Captura16.JPG}
-  %\caption[archivo \path{/etc/hosts}]{resultado del archivo \path{/etc/hosts}}
 \end{figure}
 
 Esta pantalla nos indica que todo ha salido correctamente. Comprueba entre otras cosas que los requisitos
@@ -217,7 +209,6 @@ dejarán los datos y habremos finalizado la instalación del \textit{cluster}.
 \begin{figure}[!htpb]
   \centering
   \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/capturas_cm/Captura23.JPG}
-  %\caption[archivo \path{/etc/hosts}]{resultado del archivo \path{/etc/hosts}}
 \end{figure}
 
 Si todo fue satisfactoriamente, deberemos ser redirigidos a la página principal de administración de
@@ -242,7 +233,7 @@ y luego ejecutaremos un trabajo \textit{MapReduce} que es el motor por defecto q
 \clearpage
 
 Logeados en nuestra máquina \textit{gateway}, lo primero que debemos hacer es crearnos un directorio de trabajo
-en \textit{HDFS} para nuestro usuario y darle permisos. Ademas vamos a crear un directorio temporal donde
+en \textit{HDFS} para nuestro usuario y darle permisos. Además vamos a crear un directorio temporal donde
 todos los usuarios puedan escribir.
 
 \begin{lstlisting}[language=bash, numbers=none]
@@ -294,7 +285,6 @@ Veremos una salida parecida a esta:
 \begin{figure}[!htpb]
   \centering
   \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/capturas_creacion_cluster/12.png}
-  %\caption[archivo \path{/etc/hosts}]{resultado del archivo \path{/etc/hosts}}
 \end{figure}
 
 Ahora ejecutaremos la fase reduce donde recibirá como entrada la salida del trabajo anterior
@@ -309,7 +299,6 @@ Donde nuevamente veremos una salida parecida a esta:
 \begin{figure}[!htpb]
   \centering
   \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/capturas_creacion_cluster/15.png}
-  %\caption[archivo \path{/etc/hosts}]{resultado del archivo \path{/etc/hosts}}
 \end{figure}
 
 Si nos vamos a un navegador y escribimos \path{<ip_resourcemanager>:8088}, veremos de una manera gráfica
@@ -328,7 +317,6 @@ Llegados a este punto, ya tendremos un \textit{cluster} totalmente operativo con
 
 \section{Instalación de \textit{Apache Spark}}\label{sec:instalacion_spark}
              
-%\begin{wrapfigure}[lineheight]{position}{width}
 \begin{wrapfigure}[]{l}{0.5\textwidth}
   \centering
   \includegraphics[width=0.5\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/capturas_spark/Captura1.JPG}
