@@ -5,8 +5,7 @@ valores de la variable independiente $x \in \mathds{R}^n$.
 El modelo se puede expresar como una ecuación o recta de regresión 
 $$h_{\theta}(x) = \theta^T x = \theta_0 + \theta_1 x_1 + \cdots + \theta_n x_n$$
 de la cual se debe ajustar el parámetro desconocido $\theta \in \mathds{R}^n$ para que el error 
-de las predicciones sea el menor posible.
-
+de las predicciones sea el menor posible.\\
 Dicho error viene representado por la función de perdida cuadrática
 $$J(\theta) = \frac{1}{2m} \sum_{i=1}^{m}(\theta^Tx^{(i)} - y^{(i)})^2$$
 donde $\theta^Tx^{(i)}$ representa el valor predecido para el ejemplo $i$-ésimo del \textit{dataset}, y la variable 
@@ -23,20 +22,20 @@ puntos que representan los ejemplos de entrenamiento
 \end{figure}
 
 \noindent \textbf{Gradiente de descenso}\\
-Uno de los algoritmos mas populares de optimización de funciones es el algoritmo del Gradiente 
+Uno de los algoritmos más populares de optimización de funciones es el algoritmo del Gradiente 
 de Descenso\index{Gradiente de descenso} 
 (\href{https://en.wikipedia.org/wiki/Gradient_descent}{\textit{Gradient Descent}}).
 Este algoritmo consiste en actualizar los pesos o variables $\theta_i \enskip \forall i=1, \cdots, n$ de 
 manera que con cada iteración se vaya reduciendo el error $J(\theta)$.
-Las actualizaciones en cada iteración están dadas por la siguiente fórmula~\cite{DBLP:books/lib/Bishop07}
+Las actualizaciones en cada iteración están dadas por la siguiente fórmula (vease libro ~\cite{DBLP:books/lib/Bishop07})
 
 \begin{equation}
 \theta := \theta - \alpha \frac{1}{m} \sum_{i=1}^{m}(h_{\theta}(x^{(i)}) - y^{(i)})x^{(i)}
 \end{equation}
 
-donde $\alpha$ es un parámetro que controla el salto que se produce en cada iteración del algoritmo, 
+\noindent donde $\alpha$ es un parámetro que controla el salto que se produce en cada iteración del algoritmo, 
 también denominado tasa de aprendizaje o \textit{learning rate}.
-A valores pequeños del parámetro la iteración se vuelve mas lenta pero mas segura, por el contrario, 
+A valores pequeños del parámetro la iteración se vuelve más lenta pero más segura, por el contrario, 
 valores grandes del parámetro producen que el algoritmo se acelere de manera considerable pero a costa 
 de correr el riesgo de que incluso no llegue a converger.
 
@@ -45,13 +44,12 @@ de correr el riesgo de que incluso no llegue a converger.
 Una manera lógica de paralelizar este computo es dividir el trabajo en el conjunto de entrenamiento 
 de tal manera que cada máquina trabaje sobre un cierto numero de ejemplos de entrenamiento y no 
 sobre el conjunto total.
-Supongamos que nuestro conjunto de entrenamiento $X$ tiene un total de $m=4 \cdot 10^8$ de ejemplos.
+Supongamos que nuestro conjunto de entrenamiento $X$ tiene un total de $m=4 \cdot 10^8$ ejemplos.
 Una iteración del algoritmo de descenso de gradiente tiene que recorrer todos los ejemplos y realizar 
 un calculo con cada uno de ellos, sin embargo, definamos lo siguiente:
 $$ temp^{(1)} = \sum_{i=1}^{10^8}(h_{\theta}(x^{(i)}) - y^{(i)})x^{(i)} $$
-Este calculo sería realizado en una máquina (notese que solo utiliza un cuarto del \textit{dataset} original) 
-de tal manera que esta máquina en particular solo contendría un cuarto del calculo total a realizar.
-De manera análoga definimos
+Este cálculo sería realizado en una máquina de tal manera que esta máquina en particular solo contendría 
+un cuarto del calculo total a realizar. De manera análoga definimos
 $$ temp^{(2)} = \sum_{i=10^8+1}^{2 \cdot 10^8}(h_{\theta}(x^{(i)}) - y^{(i)})x^{(i)} $$
 que sería el calculo a realizar por la segunda máquina.
 Así sucesivamente, hemos dividido el trabajo en 4 porciones que se desarrollan de manera totalmente 
@@ -62,8 +60,8 @@ Esto de nuevo en sencillo, ya que un ultimo cálculo requeriría juntar las cuat
 siguiente manera:
 $$ \theta := \theta - \alpha \frac{1}{4 \cdot 10^8}(temp^{(1)} + temp^{(2)} + temp^{(3)} + temp^{(4)}) $$
 De manera gráfica, para una paralelización en $n$ partes, cada partición de los datos se alojaría en un nodo
-como un bloque de datos el cual sería procesado y luego enviado a través de la red a un nodo que recibiría
-todas las partes y haría la agregación o combinación de los resultados.
+como un bloque de datos, el cual sería procesado y luego enviado a través de la red a un nodo que recibiría
+todos los cómputos y haría la agregación o combinación de los resultados.
 
 \begin{figure}[h]
   \centering
@@ -85,9 +83,9 @@ $ spark-submit --master yarn-client LinearRegression.py
 
 El porqué del uso del \textit{framework Spark} para desarrollar este código ha sido su capacidad para cachear 
 los datos en memoria. Esto es especialmente importante en este tipo de algoritmos ya que al ser iterativos sobre 
-el mismo conjunto de datos, el uso intensivo de escritura en disco sería una penalización en el rendimiento.\\
+el mismo conjunto de datos, el acceso intensivo a memoria es mucho más rápido que el acceso a disco.\\
 Las diversas iteraciones del algoritmo se centran en actualizar el vector de valores $\theta$ para que el error
-total al ajustar los parámetros sea el menor posible. El error se calcula en la función \textit{map\_function} 
+total al ajustar los parámetros $\theta_i$ sea el menor posible. El error se calcula en la función \textit{map\_function} 
 y no es mas que el valor predecido (\textit{self.theta.dot(x)}) menos el valor real $y$. A continuación se propaga
 este error sumandolo al resto de errores generados por cada ejemplo de entrenamiento del \textit{dataset}. El algoritmo
 se detiene cuando dicho error acumulado es menor que una cierta tolerancia prefijada.
@@ -101,7 +99,7 @@ Es un modelo que asume que las características de las variables de entrada son 
 entre sí, esto es, el valor de una cierta variable no influye para nada en el valor de otra.\\
 La idea general detrás del algoritmo es calcular la media y la varianza de cada clase y cada característica.
 Una vez realizado ésto, se pueden utilizar los valores obtenidos para predecir la clase de un nuevo 
-dato de entrada. El modelo lo etiquetará con la clase que mas se parezca de las vistas en el 
+dato de entrada. El modelo lo etiquetará con la clase que más se parezca de las vistas en el 
 conjunto de entrenamiento.
 \newline
 
@@ -146,7 +144,7 @@ propicio para unos determinados tipos de problemas.
   \begin{enumerate}
     \item Funciona muy bien en problemas multiclase. Dado un dato, es rápido y fácil predecir su clase.
     \item Asumiendo la independencia de las clases, un clasificador \textit{NaiveBayes} obtiene un mejor 
-    desempeño comparado con otros métodos como la regresión logística, además necesita menos datos 
+    desempeño comparado con otros métodos como la regresión logística. Además, necesita menos datos 
     de entrenamiento.
   \end{enumerate}
   \item Inconvenientes:
@@ -170,7 +168,7 @@ $ python NaiveBayes.py <input_file> [-r hadoop]
 Para el desarrollo de este código se ha elegido el \textit{framework MapReduce} debido a que la arquitectura del
 algoritmo es altamente paralelizable, esto es consecuencia de la asociatividad de las operaciones que se calculan.\\
 En la fase \textit{map} se parsea la línea y se separa en campos (divididos por coma), las características se 
-asignan a la variable $x$ y el último campo es la clase, asignada a la variable $y$.\\
+asignan a la variable $x$ y el último campo se asigna a la variable $y$, que es la clase.\\
 Como clave se emite una tupla que tiene por valor la clase ($y$) y la posición del campo ($i$), mientras que
 como valor se emite otra tupla que contiene el valor del propio campo ($x[i]$) y un 1 que servirá para hacer
 un conteo de los datos. Esta elección ha sido así ya que se consigue la máxima paralelización al dividir las 
