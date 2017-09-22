@@ -13,7 +13,7 @@ llamada \textbf{\textit{Cloudera Manager}}. Este software facilita enormemente e
 usuarios, ficheros de configuración y demás tareas.
 Cuando el tamaño del \textit{cluster} se vuelve grande o son muchos los servicios instalados en él,
 esta es la mejor opción para desplegarlo. \textit{Cloudera} proporciona dos maneras para dicho despliegue
-que se explican de manera general en \autoref{apendix:cloudera}.
+que se explican de manera general en el \autoref{apendix:cloudera}.
 \newline
 
 Este trabajo se enfoca también en desarrollar buenas prácticas en lo que a computación distribuida 
@@ -21,8 +21,8 @@ se refiere y se comparan distintos enfoques para la resolución de un mismo prob
 Estos enfoques permiten entender mejor los retos de la computación paralela y la depuración 
 de los algoritmos distribuidos de una manera general, no centrándose específicamente en el \textit{machine learning}.\\
 Los algoritmos de \textbf{\textit{machine learning}} se han desarrollado utilizando dos enfoques de programación 
-paralela, usando el ya clásico paradigma de programación \textit{MapReduce},  o bien utilizando el paradigma 
-\textit{Spark}, más moderno y con una cierta orientación de programación funcional. \\
+paralela, usando el ya clásico paradigma de programación \textbf{\textit{MapReduce}},  o bien utilizando el paradigma 
+\textbf{\textit{Spark}}, más moderno y con una cierta orientación de programación funcional. \\
 La utilización de uno u otro enfoque depende en gran parte de la arquitectura del algoritmo, esto es, 
 para algoritmos iterativos es más conveniente usar \textit{Spark} ya que permite persistir los datos en 
 memoria y por lo tanto reduce enormemente el tiempo de ejecución del algoritmo. Por el contrario, un 
@@ -41,8 +41,9 @@ Al final de cada sección se ha incluido el \textbf{código fuente} de cada algo
 \newline
 
 Los algoritmos programados usando el paradigma de programación \textit{MapReduce} han sido 
-desarrollados usando la librería \textit{mrjob} del lenguaje de programación \textit{Python}\texttrademark . El resto de algoritmos se han desarrollado utilizando el \textit{framework} \textit{Spark} mediante \textit{Python}, aunque
-también esta disponible en lenguajes como \textit{Java}, \textit{Scala} o \textit{R}.
+desarrollados usando la librería \textbf{\textit{mrjob}} del lenguaje de programación \textit{Python}\texttrademark . 
+El resto de algoritmos se han desarrollado utilizando el \textit{framework} \textit{Spark} mediante \textit{Python}, 
+aunque también está disponible en lenguajes como \textit{Java}, \textit{Scala} o \textit{R}.
 Se hace uso de las librerías \textit{open source} \textit{numpy}, \textit{scipy}, 
 \textit{matplotlib} y \textit{sklearn}, siempre que sean útiles para el propósito del desarrollo 
 y la visualización de los datos.
@@ -86,7 +87,7 @@ for iterative algorithms it is more convenient to use \textit{Spark} since it al
 memory and thereby greatly reduce the execution time of the algorithm. On the contrary, a
 algorithm as it can calculate the mean and the variance of a data set, does not require more than
 a complete pass of the \textit{dataset}, so with a map phase and another
-\textit{reduce} phase is sufficient to calculate these variables.
+\textit{reduce} phase is enought to calculate these variables.
 \newline
 
 Special attention is given to the scalability of the algorithms and the resource consumption of a process
