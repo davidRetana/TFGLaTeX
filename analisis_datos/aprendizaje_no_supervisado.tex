@@ -23,45 +23,41 @@ Esta función será nuestro punto de partida para construir nuestro modelo, el c
 características de los datos siguen dicha distribución, es decir, 
 $\forall j=1,\cdots,n; \quad x_j \sim \mathcal{N}(\mu_j, \sigma_j^2)$.\\
 
-El objetivo es modelizar una función que denotaremos $p(x)$, que dado un ejemplo, nos devuelva la 
+El objetivo es modelizar una función que denotaremos $p(x)$, la cual, dado un ejemplo nos devuelva la 
 probabilidad de que dicho ejemplo sea anómalo. Más adelante se definirá esta función de manera 
-concreta.
-
+concreta.\\
 Lo primero que debemos hacer es calcular las medias y varianzas de cada característica de nuestros 
 ejemplos de entrenamiento (matriz $X$), esto nos da una serie de parámetros 
 $\mu = (\mu_1, \ldots, \mu_n) $ y 
 $\sigma^2 = (\sigma_1^2, \ldots, \sigma_n^2) $ 
 que se utilizaran posteriormente para predecir la probabilidad de que un nuevo dato sea anómalo. 
-Mas concretamente:
+Más concretamente:
 $$ \mu_j = \frac{1}{m}\sum_{i=1}^{m}x_j^{(i)} \quad 
    \sigma_j^2 = \frac{1}{m}\sum_{i=1}^{m}(x_j^{(i)} - \mu_j)^2 $$
 
-Una vez que tenemos nuestros parámetros calculados ya podemos definir $p(x;\mu,\sigma^2)$ como:
+\noindent Una vez que tenemos nuestros parámetros calculados ya podemos definir $p(x;\mu,\sigma^2)$ como:
 $$ p(x;\mu,\sigma^2) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\frac{x-\mu}{\sigma^2}^2}$$
-Esta formula nos da la probabilidad de que un valor de una determinada característica se 
+Esta fórmula nos da la probabilidad de que un valor de una determinada característica se 
 comporte de manera anómala.
 
 \clearpage
 
-Una vez calculadas todas las curvas gaussianas para cada característica del \textit{dataset} definimos $p(x)$ como:
+Una vez calculadas todas las curvas gaussianas para cada característica del \textit{dataset}, definimos $p(x)$ como:
 $$ p(x) = \prod_{j=1}^n p(x_j;\mu_j,\sigma_j^2)= p(x_1; \mu_1, \sigma_1^2) \cdots  p(x_n; \mu_n, \sigma_n^2)$$
 La función $p(x)$ se comporta como un detector de irregularidades ya que si alguna de las funciones 
 $p(x_j;\mu_j,\sigma_j^2)$ para cierto $j$ arroja un valor fuera de lo normal, este quedará reflejado 
-en el valor final de $p(x)$.
-
+en el valor final de $p(x)$.\\
 Llegados a este punto, debemos establecer un cierto umbral $\epsilon$ que nos marque la frontera 
 para considerar un ejemplo como normal o anómalo, es decir, marcaremos un ejemplo $x$ como anómalo si 
 $p(x)<\epsilon$ y será considerado normal si por el contrario $p(x)>=\epsilon$.
 Esta elección del parámetro $\epsilon$ no es algo universal sino que depende del problema en cuestión 
 (\autoref{circles_plot}) y el \textit{dataset} utilizado para modelar $p(x)$.
 Existen ciertas directrices así como reglas generales para una buena elección de 
-$\epsilon$\footnote{\url{https://www.coursera.org/learn/machine-learning/lecture/Mwrni/developing-and-evaluating-an-anomaly-detection-system}}, 
-pero están fuera de los objetivos de este documento.
+$\epsilon$\footnote{\url{https://www.coursera.org/learn/machine-learning/lecture/Mwrni/developing-and-evaluating-an-anomaly-detection-system}}, pero están fuera de los objetivos de este documento.
 \newline
-  
-Gráficamente, la función $p(x)$ establece una especie de bola en n dimensiones con un cierto centro 
-y radio que dependerá del epsilon elegido y el \textit{dataset} utilizado, en la cual toda representación 
-de un ejemplo en el espacio $\mathds{R}^n$ que quede dentro de la bola, será considerado normal, 
+Gráficamente, la función $p(x)$ establece una bola n-dimensional con un cierto centro 
+y radio que dependerá del epsilon elegido y el \textit{dataset} utilizado. Toda representación 
+de un ejemplo en el espacio $\mathds{R}^n$ que quede dentro de dicha bola, será considerado normal, 
 si por el contrario dicha representación queda fuera de la bola, entonces será considerado una 
 anomalía.
 
@@ -76,7 +72,7 @@ En la figura los valores se distribuyen según
 $x1 \sim \mathcal{N}(0, 1); \quad x2 \sim \mathcal{N}(1, 0.5)$.
 Los círculos concéntricos representan la elección de distintos valores del parámetro $\epsilon$ ,
 centrados en el punto $\mu=(\mu_1, \mu_2)=(0, 1)$.
-Si tomamos como referencia el circulo mas grande, la $x$ marcada en rojo sería un ejemplo anómalo 
+Si tomamos como referencia el circulo más grande, la $x$ marcada en rojo sería un ejemplo anómalo 
 en ese conjunto de datos
 
 \newpage  
@@ -97,7 +93,7 @@ se divide separando los campos por coma (\textit{,}). Los valores emitidos son: 
 y el valor del campo ($fields[i]$) y un 1 como valor. Este 1 sirve para hacer un conteo de los datos en la fase 
 \textit{reduce}.\\
 En dicha fase \textit{reduce}, se itera sobre los valores recibidos en la fase \textit{map} y se descompone el calculo
-de la media en 2 variables aparte de crear otra variable $m$ que será un contador de los registros totales por cada campo.
+de la media en 2 variables, aparte de crear otra variable $m$ que será un contador de los registros totales por cada campo.
 Una vez terminado la iteración del \textit{for}, se utilizan las variables \textit{sum\_features} y 
 \textit{sum\_features\_squared} para calcular la media $\mu_j$ y la varianza $\sigma^2$.
 \newline
@@ -111,27 +107,24 @@ poniendo delante el prefijo de hdfs en el path: \path{hdfs://<input_file_in_hdfs
 \newpage
 
 \subsection{K-Means}
-\textbf{\textit{K-Means}}\index{K-Means} es uno de los algoritmos de \textit{clusterización}\index{Clusterización} mas 
+\textbf{\textit{K-Means}}\index{K-Means} es uno de los algoritmos de \textit{clusterización}\index{Clusterización} más 
 extendidos y usados en la actualidad. La idea principal del algoritmo es agrupar los datos de entrada 
 en distintos conjuntos o \textit{clusters}\footnote{Notese que no se debe confundir el uso de la 
 palabra \textit{cluster} para hacer referencia a un \textit{cluster} de maquinas, o cuando se usa 
-para referirnos a un conjunto de datos agrupados} 
-coherentes, esto es, los puntos dentro de una mismo \textit{cluster} son mas parecidos entre sí 
+para referirnos a un conjunto de datos agrupados.} 
+coherentes, esto es, los puntos dentro de una mismo \textit{cluster} son más parecidos entre sí 
 que los puntos de otro \textit{cluster} cualquiera.
 \newline
 
-Nuestros datos de entrada son puntos $x^{(i)} \in \mathds{R}^n$ y un cierto numero $k$ de 
-\textit{clusters} en los que vamos a agrupar nuestros datos.
-
+Nuestros datos de entrada son puntos $x^{(i)} \in \mathds{R}^n$ y un cierto numero $k \in \mathds{N}$ de 
+\textit{clusters} en los que vamos a agrupar nuestros datos.\\
 Comenzamos estableciendo $k$ puntos en lugares aleatorios de nuestros datos, estos puntos serán los 
 centros de los \textit{clusters} $c_1, c_2, \cdots, c_k$, y los llamaremos \textit{centroides}\index{Centroides}.
-Una vez hecho esto, el algoritmo recorrerá cada punto $x_i$ y encontrará el centroide $c_j$ mas 
-cercano (en términos de la distancia euclídea) a nuestro punto, con lo cual, al punto $x_i$ se le 
-asigna el \textit{cluster} $j$.
-
-Una vez que tengamos todos los puntos asignados a sus respectivos centroides mas cercanos, actualizamos 
-los centroides con la media de todos los puntos que pertenecen al \textit{cluster} de dicho centroide.
-
+Una vez hecho esto, el algoritmo recorrerá cada punto $x_i$ y encontrará el centroide $c_j$ más 
+cercano (en términos de la distancia euclídea) a nuestro punto. Por lo cual, al punto $x_i$ se le 
+asigna el \textit{cluster} $j$.\\
+Una vez que tengamos todos los puntos asignados a sus respectivos centroides más cercanos, actualizamos 
+los centroides con la media de todos los puntos que pertenecen al \textit{cluster} de dicho centroide.\\
 Las iteraciones del algoritmo se detendrán cuando en dos iteraciones sucesivas ninguno de los puntos 
 sea asignado a otro \textit{cluster} distinto al anterior o cuando la norma del vector que componen 
 la resta de los centroides de dos iteraciones consecutivas sea menos que un cierto $\epsilon$ 
@@ -140,7 +133,7 @@ prefijado.
 
 \noindent \textbf{Pasos del algoritmo K-Means}:
 \begin{enumerate}
-  \item \textbf{Input}: Puntos en $\mathds{R}^n$ y un numero $k \in \mathds{N}$ de \textit{clusters}
+  \item[] \textbf{Input}: Puntos en $\mathds{R}^n$ y un numero $k \in \mathds{N}$ de \textit{clusters}
   en los que agrupar nuestros datos.
   \item Insertar $k$ centroides $c_1, c_2, \cdots, c_k$ en localizaciones aleatorias.
   \item Calcular la distancia entre cada punto $x^{(i)}$ y cada centroide $c_i$.
@@ -148,14 +141,14 @@ prefijado.
         que la distancia al resto de centroides.
   \item Recalcular los nuevos centroides usando la formula $c_i = \frac{1}{m_j} \sum_{j=1}^{m_i}x^{(i)}$ 
         donde $m_i$ es el número de puntos que pertenecen al \textit{cluster} $i$ y $x^{(i)}$ son 
-        todos los puntos de dicho cluster, mas concretamente \\
+        todos los puntos de dicho cluster, más concretamente \\
         $x^{(i)} \in \{ p \in \mathds{R}^n \, | \, d(p, c_j) < d(p, c_s) \, \forall s \in 1, \cdots, k; s \neq j \}$.
   \item Calcular la norma entre los centroides anteriores y los nuevos centroides \\
         $ ||(c_1^i, c_2^i, \cdots, c_k^i) - (c_1^{i-1}, c_2^{i-1}, \cdots, c_k^{i-1})||_{\infty} $ 
         donde el superíndice $i$ indica la iteración $i$-ésima.
-  \item Si esta norma es menor que un cierto $\epsilon$ prefijado entonces parar, en caso contrario 
-        volver al paso $3$        
-  \item \textbf{Output}: $k$ centroides $c_1, c_2, \cdots, c_k$.
+  \item Si dicha norma es menor que un cierto $\epsilon$ prefijado entonces parar (se ha llegado a la convergencia), 
+        en caso contrario volver al paso $2$.
+  \item[] \textbf{Output}: $k$ centroides $c_1, c_2, \cdots, c_k$.
 \end{enumerate}
 
 \begin{figure}[htp]
@@ -192,7 +185,7 @@ $ spark-submit --master yarn-client KMeansSpark.py
 \end{lstlisting}
 
 Para el desarrollo de este código se ha elegido el \textit{framework Spark} debido principalmente a que el algoritmo
-de \textit{K-Means} es un algoritmo iterativo los mismos datos para realizar los computos, por lo que con la capacidad
+de \textit{K-Means} es un algoritmo iterativo sobre los mismos datos para realizar los computos. Debiado a la capacidad
 de \textit{Spark} de cachear los datos en memoria, los tiempos de ejecución se reducirán considerablemente.
 \newline
 
@@ -203,7 +196,7 @@ Dentro del bucle \textit{while}, la variable \textit{points\_clusterized} contie
 a una tupla que contiene el centroide más cercano al punto $p$ en cuestión y un 1 que permite realizar posteriormente
 el conteo de los puntos totales. La variable \textit{clusters\_set} realiza una agregación que suma los puntos de
 entrada y los unos anteriores para realizar la media de cada \textit{cluster} de puntos.\\
-La variable \textit{new\_centroids} realiza en primer lugar un mapeo de los valores para calcular la división 
+La variable \textit{new\_centroids} realiza un mapeo de los valores para calcular la división 
 de la suma de los puntos y el conteo, de esta manera se obtienen los nuevos centroides que se guardan en la variable
 \textit{new\_centroids}. Por último, se calcula la distancia entre los nuevos centroides y los anteriores con el fin
 de calcular la distancia para el criterio de parada (del bucle \textit{while}).\\
