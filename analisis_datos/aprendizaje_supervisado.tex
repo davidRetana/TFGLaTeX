@@ -83,9 +83,9 @@ todas las partes y haría la agregación o combinación de los resultados.
 $ spark-submit --master yarn-client LinearRegression.py
 \end{lstlisting}
 
-El uso del \textit{framework Spark} para desarrollar este código ha sido su capacidad para cachear los datos en
-memoria. Esto es especialmente importante en este tipo de algoritmos ya que al ser iterativos sobre el mismo
-conjunto de datos, el uso intensivo de escritura en disco sería una penalización en el rendimiento.\\
+El porqué del uso del \textit{framework Spark} para desarrollar este código ha sido su capacidad para cachear 
+los datos en memoria. Esto es especialmente importante en este tipo de algoritmos ya que al ser iterativos sobre 
+el mismo conjunto de datos, el uso intensivo de escritura en disco sería una penalización en el rendimiento.\\
 Las diversas iteraciones del algoritmo se centran en actualizar el vector de valores $\theta$ para que el error
 total al ajustar los parámetros sea el menor posible. El error se calcula en la función \textit{map\_function} 
 y no es mas que el valor predecido (\textit{self.theta.dot(x)}) menos el valor real $y$. A continuación se propaga
