@@ -3,13 +3,17 @@
 \markboth{Conclusión}{} % para que la cabecera coincida bien con el capítulo
 % Mini mini resumen del report
 Hemos visto como desplegar un \textit{cluster} de máquinas utilizando el software  \textit{Apache Hadoop}, 
-y posteriormente utilizarlo para desarrollar algoritmos paralelos de \textit{machine learning}.\\
-Respecto a los conocimientos necesarios para abordar este trabajo, han sido especialmente útiles las asignaturas
-de programación paralela, geometría computacional y programación declarativa entre otras. También han sido especialmente
-necesarios los conocimientos acerca de sistemas \textit{UNIX}, sobre todo su uso a través de la línea de comandos
-(\textit{CLI}\footnote{\textit{Command Line Interface}} por sus siglas en inglés). Si bien no hay una asignatura
-específica para estos conocimientos en la carrera de Ciencias Matemáticas, el libro \cite{unix_programming_environment}
-es un buen punto de partida para aprender.
+y posteriormente utilizarlo para desarrollar algoritmos paralelos de \textit{machine learning}. Dichos algoritmos
+se han desarrollado tanto en \textit{MapReduce} como en \textit{Spark}.
+
+Respecto a los conocimientos necesarios para abordar este trabajo, del grado en \textbf{Ciencias Matemáticas}
+cabe destacar por su especial utilidad las asignaturas de programación paralela, geometría computacional y 
+programación declarativa entre otras. Todas ellas pertenecientes al itinerario de \textbf{ciencias de la computación}.
+Adicionalmente a estos conocimientos, también han sido especialmente necesario aprender el funcionamiento
+de los sistemas \textit{UNIX} (en particular de \textit{LINUX}), sobre todo su uso a través de la línea de comandos 
+(\textit{CLI}, \textit{Command Line Interface}). 
+Si bien no hay una asignatura específica para aprender estos sistemas operativos en la carrera de Matemáticas, 
+el libro \cite{unix_programming_environment} es un buen punto de partida para comenzar.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Retomar los objetivos y evaluarlos
@@ -33,21 +37,23 @@ se han realizado siguiendo el plan de trabajo establecido. A modo de evaluación
             debido a las herramientas de \textit{Cloudera} y al gestor de paquetes de \textit{Python}. Esta parte no
             supuso mayor complicación.
   \end{itemize}
-  \item Desarrollo de algoritmos de \textbf{\textit{machine learning}} de manera distribuida.
+  \item Desarrollo de algoritmos de \textbf{\textit{machine learning}} de manera paralela.
   \begin{itemize}
     \item[] Los algoritmos desarrollados cumplen con las características que todo algoritmo distribuido debe cumplir,
             especialmente en lo que se refiere a la \textbf{escalabilidad}. El incremento de los datos a procesar solo
-            penaliza en el rendimiento y nunca llega a colapsar el programa. Tanto los algoritmos desarrollados en
-            \textit{MapReduce} como en \textit{Spark} cumplen con dichas condiciones de escalabilidad si bien el diseño
-            de cada uno de ellos es diferente debido a su arquitectura interna.\\
+            penaliza el rendimiento en cuanto a tiempo de ejecución y nunca llega a colapsar el programa. 
+            Tanto los algoritmos desarrollados en \textit{MapReduce} como en \textit{Spark} cumplen con dichas 
+            condiciones de escalabilidad si bien el diseño de cada uno de ellos es diferente debido a su 
+            arquitectura interna.\\
             La clave a la hora de conseguir este objetivo es tener en mente que el diseño de los algoritmos paralelos
             se basa en no guardar variables en memoria que puedan colapsar la capacidad del nodo trabajador.
             El proceso de desarrollo de algoritmos distribuidos implica cambiar la mentalidad a la hora de escribir
             el código ya que los datos se encuentran repartidos en distintas máquinas que funcionan de manera 
-            asíncrona. El reto en este objetivo era desarrollar estos algoritmos en lo que a buenas prácticas se refiere,
-            por lo que se ha cumplido.
+            asíncrona. El reto en este objetivo era desarrollar estos algoritmos en lo que a buenas prácticas se refiere.
   \end{itemize} 
 \end{itemize}
+
+\clearpage
 
 \subsection*{Líneas de trabajo futuras}
 Este proyecto puede servir como base para futuros trabajos relacionados con los temas que aquí se tratan, 
