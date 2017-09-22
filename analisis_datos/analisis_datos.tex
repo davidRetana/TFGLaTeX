@@ -11,12 +11,11 @@ Por estas y más razones, el \textit{machine learning} y las grandes cantidades 
 \textit{Big Data} están estrechamente relacionadas.
 
 \section{¿Qué es el machine learning?}
-\textit{Machine Learning}\index{Machine Learning} (ML) es una rama de la inteligencia artificial (IA) 
+El \textit{Machine Learning}\index{Machine Learning} (ML) es una rama de la inteligencia artificial (IA) 
 que se centra en desarrollar métodos para hacer posible que los sistemas aprendan sin ser programados 
 explícitamente para ello.
 El denominado aprendizaje automático se basa en los datos de entrada o datos de entrenamiento, que
-son utilizados para ajustar los modelos tanto predictivos, como clasificatorios, o de clusterización.
-
+son utilizados para ajustar los modelos tanto predictivos, como clasificatorios o de clusterización.\\
 Podemos clasificar los modelos de \textit{machine learning} en dos clases:
 \begin{itemize}
   \item \textbf{Aprendizaje supervisado}\index{Aprendizaje!supervisado}: los datos de entrada del 
@@ -36,7 +35,7 @@ Podemos clasificar los modelos de \textit{machine learning} en dos clases:
 
 Aunque el concepto de \textit{machine learning} apareció a mediados del siglo $XX$, es ahora cuando su evolución
 ha crecido en importancia debido al aumento de la capacidad de computo de los ordenadores.
-Lo esencial en ML son los datos, los modelos se alimentan de ellos y es por lo que cuantos más
+Lo esencial en \textit{machine learning} son los datos, los modelos se alimentan de ellos y es por lo que cuantos más
 datos tengamos a disposición, más preciso será nuestro modelo entrenado a coste de un mayor
 tiempo de procesamiento (\cite{DBLP:books/lib/Bishop07}). Esta afirmación es matizable, ya que en ciertos casos 
 (ver: \url{https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff})
@@ -79,7 +78,7 @@ de entrenamiento, que en entornos secuenciales pueden llegar a ser inviables.
 \newline
 
 En el \autoref{chap:implementacion_paralela} se estudiará, analizará e implementará de manera paralela 
-algunos de los algoritmos mas populares y usados hoy en día de \textit{machine learning}.
+algunos de los algoritmos más populares y usados hoy en día de \textit{machine learning}.
 
 \section{Machine learning pipelines}\label{sec:ml_pipeline}
 El desarrollo de un modelo de \textit{machine learning} pasa por una serie de fases o procesos de desarrollo,
@@ -89,24 +88,23 @@ de producción.
 En la vida real los datos provienen de diversas fuentes como sensores, redes sociales o bases de datos.
 Estos datos no siempre vienen formateados de manera numérica por lo que
 hay diversos motivos por los cuales el preprocesamiento es algo fundamental.\\
-Nos podemos encontrar con que nos faltan valores en un determinado registro y una determinada columna,
+Nos podemos encontrar con que nos faltan valores en un determinado registro y una determinada columna
 que deben ser rellenados o eliminados con el fin de utilizarlos posteriormente en nuestro modelo.
 En los datos crudos suele ser muy común encontrarse con características que son categóricas en 
 vez de numéricas, esto es, un registro puede contener el sexo de una persona (hombre, mujer), el color 
 de un coche (rojo, negro, azul...). 
 Todas estas características deben ser convertidas a un formato numérico (escalar o vector de escalares) 
 para ser procesadas posteriormente.\\
-Nuestro \textit{dataset} crudo tal vez contenga \textit{outliers}\index{Outlier}\footnote{los outliers son 
-valores atípicos  respecto al resto de observaciones de una muestra.} que queramos eliminar o 
-transformar, etc.
+También puede ser que nuestro \textit{dataset} crudo tal vez contenga 
+\textit{outliers}\index{Outlier}\footnote{los outliers son valores atípicos  respecto al resto de observaciones 
+de una muestra.} que queramos eliminar o transformar, etc.
 \newline
 
 Debido a estos motivos, necesitamos un preprocesamiento de los datos con el fin de limpiarlos y 
-prepararlos para ser consumidos por el modelo matemático.
-
+prepararlos para ser consumidos por el modelo matemático.\\
 Posteriormente, en la mayoría de los casos es necesario escalar los datos para un desempeño óptimo, 
-debido a que si no lo hacemos, las características de los datos con un valor numérico mas alto 
-tendrán mas peso en la función objetivo. Este escalado previo es necesario en modelos como 
+debido a que si no lo hacemos, las características de los datos con un valor numérico más alto 
+tendrán más peso en la función objetivo. Este escalado previo es necesario en modelos como 
 las redes neuronales o la regresión logística.
 
 \clearpage
@@ -118,7 +116,7 @@ las redes neuronales o la regresión logística.
   \begin{enumerate}
     \item Limpieza y purga: quitar o rellenar registros vacíos, tratamiento de valores nulos 
           y $N/A$, convenciones en formato de fechas...
-    \item \textit{Feature Engineering}\index{Feature engineering} convertir variables categóricas a numéricas, 
+    \item \textit{Feature Engineering}\index{Feature engineering}: convertir variables categóricas a numéricas, 
           estandarización o escalado de los datos...
     \item División de los datos: dividir el conjunto de datos en conjunto de entrenamiento y 
           conjunto de test (generalmente en proporciones $70 - 30\%$ o similar).
@@ -168,33 +166,28 @@ En este capítulo se implementarán algunos de los algoritmos más populares de 
 pero con un enfoque distribuido, con el fin de minimizar los tiempos de ejecución a medida que
 el \textit{dataset} se vuelve más grande.
 Cada sección consistirá en explicar de una manera breve y concisa la problemática a estudiar, 
-el algoritmo a desarrollar, exponer el código fuente del algoritmo en paralelo y por último se mostrará
-una gráfica comparativa de tiempos usando distintos enfoques para el mismo problema.
+el algoritmo a desarrollar y la publicación del código fuente del algoritmo en paralelo.
 \newline
 
 Para comenzar, vamos a establecer una serie de convenciones para la notación, con el fin de explicar
-las matemáticas que hay detrás de los algoritmos de \textit{machine learning}.
-
+las matemáticas que hay detrás de los algoritmos de \textit{machine learning}.\\
 El numero total de datos de entrenamiento se marcara con la letra $m$, mientras que es numero total
-de características de los datos se denotara con la letra $n$.
-
+de características de los datos se denotara con la letra $n$.\\
 Un dato de entrenamiento sera un vector fila donde cada componente del vector será una característica
 de dicho dato. A cada dato del conjunto de entrenamiento se le denotara con la letra $x$ y un 
-superíndice, mientras que las características se denotaran con la letra $x$ y subíndices. 
-
+superíndice, mientras que las características se denotaran con la letra $x$ y subíndices.\\ 
 En caso de que el dato lleve aparejado una clase a la que pertenece, ésta será denotada con la letra 
 $y$. Así pues, para un primer ejemplo de entrenamiento (supervisado) sería:
-$$ x^{(1)}=(\underbrace{x^{(1)}_1, x^{(1)}_2, \cdots, x^{(1)}_n}_{\text{n características}}); y^{(1)} $$
+$$ x^{(1)}=(\underbrace{x^{(1)}_1, x^{(1)}_2, \cdots, x^{(1)}_n}_{\text{n características}}) \in \mathds{R}^n; \>
+   y^{(1)} \in \mathds{R} $$
 
 Al conjunto total de datos lo denotaremos con la letra $X$ que representará la matriz que contiene
 todos los datos de entrenamiento, donde cada ejemplo será un vector fila de la matriz.
 La letra $y$ será un vector columna conteniendo las clases de sus respectivos datos (aparejados por el índice), 
 por lo que a la fila $i$-ésima de la matriz le corresponde la clase $i$-ésima del vector $y$.
 Si estamos hablando de un problema de aprendizaje no supervisado, no tendría sentido hablar de las clases 
-aparejadas a cada dato, con lo cual el vector $y$ no existiría.
-
+aparejadas a cada dato, con lo cual el vector $y$ no existiría.\\
 A modo de ejemplo, el conjunto de entrenamiento para un problema de aprendizaje supervisado quedaría así:
-%\vspace{1pt}
 
 $$
 X = \left(\begin{array}{ccc}
