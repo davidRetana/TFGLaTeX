@@ -2,9 +2,9 @@
 \chapter{Computación paralela}
 La computación paralela consiste en dividir el flujo de procesamiento en instrucciones que se ejecutan 
 simultáneamente y de manera asíncrona con el fin de reducir los tiempos de ejecución de un programa.
-Es especialmente importante hoy en día debido a la gran cantidad de datos que procesan las aplicaciones 
+Es especialmente importante hoy en día debido a la gran cantidad de datos que tratan las aplicaciones 
 desarrolladas en el área del \textit{Big data}.\\
-Este enfoque de programación obliga a rediseñar los algoritmos, en el libro \cite{DBLP:books/cu/C2017}
+Este enfoque de programación obliga a rediseñar los algoritmos de procesamiento, en el libro \cite{DBLP:books/cu/C2017}
 se encuentra una buena introducción al diseño de algoritmos paralelos.
 
 \section[Enfoques procesamiento]{Distintos enfoques de procesamiento}\label{sec:distintos_enfoques_procesamiento}
@@ -19,12 +19,12 @@ A nivel de programación o código hay 3 enfoques de procesamiento de los datos:
 A nivel de procesador también existe el concepto de paralelismo ya que las nuevas arquitecturas de \textit{microchips}
 incorporan varios núcleos físicos, además cada núcleo puede manejar varios procesos a la vez 
 (lo que se conoce como concurrente). Dentro de cada hilo de ejecución, las instrucciones son procesadas una a una en 
-en orden en que aparecen (procesamiento secuencial).
+el orden en que aparecen (procesamiento secuencial).
 \newline
 
 Podemos programar de manera secuencial con \textit{Python}, de manera concurrente usando \textit{Python} y 
-librerías tales como \textit{numpy} o \textit{multiprocessing}, o podemos programar de manera totalmente paralela
-usando el lenguaje \textit{Python} y \textit{Apache Spark} o \textit{MapReduce} (a través de \textit{mrjob}).\\
+librerías como \textit{numpy} o \textit{multiprocessing}, o podemos programar de manera totalmente paralela
+usando \textit{Python} y \textit{Apache Spark} o \textit{MapReduce} (en este último, a través de \textit{mrjob}).\\
 Al ejecutar un programa básico \textit{Python}, este se ejecuta como un solo proceso. Si nuestro ordenador tiene 
 por ejemplo 2 núcleos físicos (y 4 virtuales) esto quiere decir que al ejecutarse nuestro código 
 este consumirá un solo núcleo virtual (\textit{virtual core} o vcore\index{Vcore}),
@@ -48,7 +48,7 @@ $ top
 Este comando muestra el consumo de recursos de cada proceso que esta corriendo en nuestra máquina.
 Para monitorizar el consumo de recursos cuando se lance un proceso hay que tener en cuenta que los trabajos en 
 un \textit{cluster} se distribuyen a través de los nodos, por lo que el comando \textit{top} mostrado anteriormente 
-solo nos da información de la máquina donde se ejecute.
+solo nos da información de la máquina donde se ha lanzado.
 
 \clearpage
 
@@ -56,12 +56,12 @@ solo nos da información de la máquina donde se ejecute.
 En este trabajo nos centraremos especialmente en dos \textit{frameworks}
 \footnote{\url{https://es.wikipedia.org/wiki/Framework}.}: \textit{MapReduce} y \textit{Spark}. \\
 Ambos son motores de procesamiento distribuido aunque con un diseño muy diferente, que dependiendo 
-de la naturaleza del problema a resolver será mas conveniente utilizar uno u otro.
+de la naturaleza del problema a resolver será más conveniente utilizar uno u otro.
 
 % MapReduce
 \begin{description}
   \item[\textit{MapReduce}\index{Apache!MapReduce}:] es un \textit{framework} de procesamiento inspirado 
-  en dos de las principales funciones de la programación funcional, \textit{map} y \textit{reduce}.
+  en dos de las principales funciones de la programación funcional: \textit{map} y \textit{reduce}.
   \begin{itemize}
     \item \textit{map}: fase donde se produce el procesamiento en paralelo de los datos. 
           Recibe como entrada tuplas (clave, valor) $(k_x, v_x)$ y genera como salida 
@@ -70,7 +70,7 @@ de la naturaleza del problema a resolver será mas conveniente utilizar uno u ot
           (las claves iguales van a parar a un mismo reduce) y el ordenamiento de las mismas.
     \item \textit{reduce}: fase donde se procesa el conjunto de valores para una misma clave.
   \end{itemize}
-  Adicionalmente se pueden incorporar mas fases para optimizar los trabajos \textit{MapReduce}, como por
+  Adicionalmente, se pueden incorporar más fases para optimizar los trabajos \textit{MapReduce} como por
   ejemplo la utilización de \textit{combiners}\index{Combiner}\footnote{fase reduce ejecutada localmente
   en un nodo para reducir el coste del movimiento de datos a través de la red.}.\\
   \textit{MapReduce} esta incluido en \textit{YARN v2} como motor por defecto. Además, cuenta con implementaciones en 
