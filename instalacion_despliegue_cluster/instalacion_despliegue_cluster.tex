@@ -2,7 +2,7 @@
 \chapter{Instalación y despliegue de un \textit{cluster}}
 En esta sección se cuenta el proceso para acondicionar las máquinas y así poder constituir un 
 \textit{cluster} donde posteriormente instalar el software \textit{Hadoop}.
-Previamente a la instalación de \textit{Hadoop} hay que configurar las máquinas con los requisitos 
+Previamente a la instalación de \textit{Hadoop} hay que configurar los nodos con los requisitos 
 necesarios e instalar distintos paquetes de \textit{software} para el correcto funcionamiento.\\
 La instalación se ha realizado en 7 máquinas con las siguientes características:
 
@@ -24,8 +24,8 @@ La instalación se ha realizado en 7 máquinas con las siguientes característic
   \label{cluster_machines_specification}
 \end{table}
 
-Con las máquinas disponibles lo primero que debemos hacer es elegir que máquina albergará cada rol dentro 
-del \textit{cluster}, esto vendrá dado por los recursos disponibles de cada nodo y el uso que pretendamos hacer.
+Con los nodos disponibles lo primero que debemos hacer es elegir que máquina albergará cada rol dentro 
+del \textit{cluster}. Esto vendrá dado por los recursos disponibles de cada nodo y el uso que pretendamos hacer.
 Hay que tener en cuenta que \textit{Hadoop} es escalable por lo que nuestro \textit{cluster} podrá 
 ser ampliado en número de nodos según sea la demanda de recursos que necesitemos.\\
 En nuestro caso, el reparto de roles queda así:
@@ -150,7 +150,7 @@ Finalmente arrancamos el servicio del \textit{cloudera-manager-server}
 $ sudo service cloudera-scm-server start
 \end{lstlisting}
 
-Este proceso tarda en terminar de ejecutarse pero una vez finalizado nos abrimos un navegador desde nuestro
+Este proceso tarda en terminar de ejecutarse pero una vez finalizado abrimos un navegador desde nuestro
 portátil y escribimos en el campo de la url: \path{<ip_nodo_cloudera_manager>:7180}\\
 A partir de ahora, será el asistente gráfico el que nos guíe a través del proceso de instalación del
 \textit{cluster} en el resto de las máquinas. Para hacer el login inicial escribimos usuario:admin y 
@@ -163,7 +163,7 @@ password:admin, de esta manera ya estamos dentro del asistente gráfico.
 
 Como se comento previamente, \textit{Cloudera Manager} es un software gratuito pero en su versión \textit{Cloudera Express},
 sin embargo, tiene una versión de pago llamada \textit{Cloudera Enterprise} con funciones avanzadas para la gestión del
-\textit{cluster} además de soporte. Esta opción esta disponible durante un mes a modo de prueba gratuita.
+\textit{cluster} además de soporte. Esta opción está disponible durante un mes a modo de prueba gratuita.
 \newline
 
 A lo largo de toda la instalación nos pedirá diversas opciones de configuración como por ejemplo el uso de
@@ -190,7 +190,7 @@ A continuación se comenzará a descargar los paquetes de código y distribuirlo
   \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/imagenes/capturas_cm/Captura11.JPG}
 \end{figure}
 
-Si todo funciona correctamente deberemos ver una pantalla como la siguiente:
+Si todo funciona bien deberemos ver una pantalla como la siguiente:
 
 \begin{figure}[!htpb]
   \centering
@@ -214,10 +214,10 @@ dejarán los datos y habremos finalizado la instalación del \textit{cluster}.
 Si todo fue satisfactoriamente, deberemos ser redirigidos a la página principal de administración de
 \textit{Cloudera Manager}. Esta página será el punto de partida para cualquier configuración que queramos hacer
 en el \textit{cluster}, así como añadir nuevos nodos, desplegar nuevos servicios, habilitar la alta
-disponibilidad en el \textit{cluster} (HA\index{HA} por sus siglas en inglés 
+disponibilidad (HA\index{HA} por sus siglas en inglés 
 \textit{High Availability}\footnote{Consiste en habilitar un segundo \textit{namenode} en el \textit{cluster} 
-para evitar que un fallo en el nodo \textit{namenode} deje fuera de servicio al \textit{cluster} entero.})...\\
-Además permite obtener métricas del uso de \textit{CPU}, I/O de red y de disco, etc.
+para evitar que un fallo en el \textit{namenode} principal deje fuera de servicio al \textit{cluster} entero.})...\\
+Además permite obtener métricas del uso de \textit{CPU}, I/O de disco, uso de red, etc.
 
 \begin{figure}[!htpb]
   \centering
