@@ -1,30 +1,12 @@
 
 \documentclass{beamer}
 
-\mode<presentation> {
+\mode<presentation> 
+  {
+  \usetheme{Madrid}
+  }
 
-\usetheme{Madrid}
-
-%\usecolortheme{albatross}
-%\usecolortheme{beaver}
-%\usecolortheme{beetle}
-%\usecolortheme{crane}
-%\usecolortheme{dolphin}
-%\usecolortheme{dove}
-%\usecolortheme{fly}
-%\usecolortheme{lily}
-%\usecolortheme{orchid}
-%\usecolortheme{rose}
-%\usecolortheme{seagull}
-%\usecolortheme{seahorse}
-%\usecolortheme{whale}
-%\usecolortheme{wolverine}
-
-%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
-%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
-
-%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PAQUETES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
@@ -65,10 +47,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITULO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title[Machine Learning y Big Data]{Estudio comparativo de algoritmos de machine learning e implementación en Hadoop}
+\title[Machine Learning y Big Data]
+      {Estudio comparativo de algoritmos paralelos de machine learning e implementación en Hadoop}
 \author{David Retana Ribeiro}
 \institute[UCM]{Universidad Complutense de Madrid \\ \medskip \texttt{davidret@ucm.es}}
-\date{3 de Octubre de 2017}
+\date{4 de Octubre de 2017}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -98,32 +81,29 @@
   \begin{block}{Big Data}
   Vivimos en la era de los datos, cada día se producen más y más datos  que necesitan ser almacenados y
   procesados para poder sacarles partido.\\
-  El termino \textbf{\textit{Big Data}} nace como un concepto para hacer referencia a la incapacidad de 
+  El termino \textbf{Big Data} nace como un concepto para hacer referencia a la incapacidad de 
   los sistemas tradicionales de almacenar y procesar un conjunto masivo de datos.
   \end{block}
   
   \begin{block}{Machine Learning}
-  El \textbf{\textit{machine learning}} es una rama de la inteligencia artificial que permite crear sistemas que 
+  El \textbf{machine learning} es una rama de la inteligencia artificial que permite crear sistemas que 
   aprendan automáticamente sin ser programados explícitamente para ello.\\
-  Debido a que el \textit{machine learning} se alimenta de los datos, cuantos más datos tengamos para
-  entrenar los modelos más preciosos serán estos, por lo que los términos \textit{Big Data} y \textit{machine learning}
-  están estrechamente relacionados.
+  Consiste en sacar patrones de los datos con el fin de crear modelos que permitan obtener un beneficio
+  de los mismos. Estos modelos se apoyan en fórmulas matemáticas para su creación, principalmente de 
+  álgebra lineal y estadística.
   \end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame} % Como encajan Hadoop, mapreduce, spark y machine learning al big data
-  \frametitle{Herramientas del Big Data}
+  \frametitle{Apache Hadoop y Apache Spark}
   Actualmente, existen diversas herramientas que nos permiten trabajar con las grandes cantidades de datos
   manejadas en el \textit{Big Data}. \textit{Apache Hadoop} es el software base que nos permite desplegar
-  un cluster de máquinas sobre el que trabajar y desarrollar.\\
-  Además de \textit{Hadoop} existen diversas herramientas para numerosos propósitos como pueden ser almacenamiento,
-  procesamiento, bases de datos no relacionales (noSQL)...\\
-  Entre esas herramientas cabe destacar \textit{Cassandra}, \textit{Apache Spark}, \textit{Hive}, \textit{MongoDB}...
-  \includegraphics[width=0.33\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/cassandra_logo.png}%
-  \includegraphics[width=0.33\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/spark_logo.png}%
-  \includegraphics[width=0.33\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/mongodb_logo.png}
+  un cluster de máquinas sobre el que trabajar y desarrollar nuestros algoritmos.\\
+  Hadoop incluye MapReduce como motor de procesamiento por defecto pero también es perfectamente compatible con Spark.
+  \includegraphics[width=0.5\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/hadoop_logo.png}%
+  \includegraphics[width=0.5\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/spark_logo.png}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -146,7 +126,7 @@
 \begin{frame}[fragile] % fragile permite añadir codigo con lstlisting
 \frametitle{HDFS}
 \begin{block}{Hadoop Distributed File System}
-Ejemplos de comandos de \textit{HDFS}:
+Ejemplos de comandos de HDFS:
 \begin{lstlisting}[language=bash, numbers=none, frame=single]
 $ # crea un directorio recursivamente
 $ hdfs dfs -mkdir -R <direccion_a_crear>
@@ -159,7 +139,7 @@ $ hdfs dfs -get <path_hdfs> <path_local>
 En un navegador escribimos: \path{<ip_namenode>:50070}
 
 \end{block}
-\includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/overview_cluster.png}
+\includegraphics[width=0.9\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/overview_cluster.png}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -185,17 +165,21 @@ $ hadoop jar WordCount.jar WordCount \
 \begin{frame}[fragile]
 \frametitle{\textit{Apache Spark}}
 
+\begin{block}{}
 \begin{lstlisting}[language=bash, numbers=none, frame=single]
 $ pyspark --master yarn-client
 \end{lstlisting}
+\end{block}
 
 \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/pyspark_shell.png}
 
+\begin{block}{}
 \begin{lstlisting}[language=bash, numbers=none, frame=single, showstringspaces=false]
 >>> rdd = sc.parallelize(range(1000))
 >>> n = rdd.count()
 >>> print("Numero de elementos: ", n)
 \end{lstlisting}
+\end{block}
 
 \end{frame}
 
@@ -207,115 +191,55 @@ $ pyspark --master yarn-client
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Multiple Columns}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.45\textwidth} % Left column and width
-\textbf{Heading}
-\begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
-\end{enumerate}
-
-\column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-
-\end{columns}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MACHINE LEARNING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Algoritmos de \textit{Machine Learning}}
+\section{\textit{Machine Learning}}
 
-\begin{frame}
-\frametitle{Reducción de tiempos}
-El desarrollo de algoritmos paralelos de \textit{machine learning}, debido a su carácter experimental
-necesitan ser entrenados para obtener el mejor ajuste de los parámetros. De esta manera, el cómputo
-paralelo se vuelve fundamental para reducir los tiempos de ejecución.
+%El desarrollo de algoritmos paralelos de machine learning, debido a su carácter experimental,
+%necesitan ser entrenados varias veces para obtener el mejor ajuste de los parámetros. De esta manera, el cómputo
+%paralelo se vuelve fundamental para reducir los tiempos de ejecución.
+\begin{frame} % machine learning en general
+\frametitle{Machine Learning}
+¿Cómo encaja el machine learning en el Big Data?
+\centering
+\includegraphics[scale=0.5]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/contour_surface.png}
+Debido a que el Machine Learning se alimenta de los datos, cuantos más datos tengamos para entrenar los modelos más 
+preciosos serán estos, por lo que los términos Big Data y Machine Learning están estrechamente relacionados.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-\frametitle{Table}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Algoritmo de \textit{NaiveBayes}}
-
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}[fragile]
-\frametitle{Verbatim}
-\begin{example}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{example}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
-%\begin{figure}
-%\includegraphics[width=0.8\linewidth]{test}
-%\end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Algoritmo de \textit{K-Means}}
 
-\begin{frame}[fragile]
-\frametitle{Citation}
-An example of the \verb|\cite| command to cite within the presentation:\\~
-
-This statement requires citation \cite{p1}.
+\begin{frame}[fragile] % contar aprendizaje no supervisado y algoritmo kmeans por encima
+\frametitle{Algoritmo de K-Means}
+En el aprendizaje no supervisado es el propio algoritmo el que debe encontrar los patrones ocultos entre los datos.
+El algoritmo de K-Means es un algoritmo muy popular de clusterización que se encaja dentro de esta categoría de 
+aprendizaje no supervisado.\\
+Veamos de una manera gráfica su funcionamiento
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame} % kmeans gif
   \animategraphics[loop, controls, width=\linewidth]{1} % {n} cuanto menor mas lento
   {C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/kmeans_imagen}{0}{4}
 \end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-\frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
-\end{thebibliography}
-}
+%TODO revisar
+\begin{frame}[fragile] % exponer el codigo fuente (explicar porqué se usa spark en vez de MapReduce)
+\frametitle{Código fuente}
+%\lstinputlisting[caption=KMeansSpark.py, language=Python, firstline=8, lastline=72]
+%                {C:/Users/David/Desktop/TFG/implementaciones/KMeansSpark.py}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame} % tabla y grafica comparativa de tiempos (spark vs numpy)
+\frametitle{Comparativa de rendimiento}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
