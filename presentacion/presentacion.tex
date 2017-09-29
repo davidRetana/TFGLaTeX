@@ -14,6 +14,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{animate} % para crear el gif de kmeans
+\decimalpoint % cambia la coma por el punto como separador de decimales en math mode
 %\usepackage[usenames, dvipsnames]{xcolor} % para los colores
 \usepackage{listings} % para el codigo fuente
 \lstset
@@ -38,11 +39,11 @@
     pdfkeywords={computacion paralela, apache hadoop, apache spark, machine Learning, big data, python, k means,
                naive bayes, yarn, hdfs, cluster}, % list of keywords
     pdfnewwindow=true,      % links in new PDF window
-    %colorlinks=true,       % false: boxed links; true: colored links
+    colorlinks=true,       % false: boxed links; true: colored links
     %linkcolor=red,          % color of internal links (change box color with linkbordercolor)
     %citecolor=green,        % color of links to bibliography
     %filecolor=magenta,      % color of file links
-    %urlcolor=cyan           % color of external links
+    urlcolor=cyan           % color of external links
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITULO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -135,27 +136,28 @@ $ hdfs dfs -put <path_archivo_local> <path_hdfs>
 $ # Descarga un archivo de HDFS a local
 $ hdfs dfs -get <path_hdfs> <path_local> 
 \end{lstlisting}
+\end{block}
 
 En un navegador escribimos: \path{<ip_namenode>:50070}
 
-\end{block}
 \includegraphics[width=0.9\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/overview_cluster.png}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[fragile]
-  \frametitle{YARN v2 (\textit{MapReduce} incluido)}
-  Lanzamiento de un trabajo \textit{MapReduce} en un \textit{cluster Hadoop}
-  \begin{lstlisting}[language=bash, numbers=none, frame=single]
+\frametitle{YARN v2 (\textit{MapReduce} incluido)}
+Lanzamiento de un trabajo \textit{MapReduce} en un \textit{cluster Hadoop}
+\begin{lstlisting}[language=bash, numbers=none, frame=single]
 $ hadoop jar WordCount.jar WordCount \
   <input_path> <output_path>
-  \end{lstlisting}
+\end{lstlisting}
   
-  En un navegador escribimos: \path{<ip_resource_manager>:8088}\\
-  De esta manera podemos ver los trabajos que están corriendo en nuestro \textit{cluster} y su progreso.
+En un navegador escribimos: \path{<ip_resource_manager>:8088}\\
+\vfill
+%De esta manera podemos ver los trabajos que están corriendo en nuestro \textit{cluster} y su progreso.
   
-  \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/mapreduce_application.png}
+\includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/mapreduce_application.png}
   
 \end{frame}
 
@@ -203,6 +205,8 @@ $ pyspark --master yarn-client
 ¿Cómo encaja el machine learning en el Big Data?
 \centering
 \includegraphics[scale=0.5]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/contour_surface.png}
+
+
 Debido a que el Machine Learning se alimenta de los datos, cuantos más datos tengamos para entrenar los modelos más 
 preciosos serán estos, por lo que los términos Big Data y Machine Learning están estrechamente relacionados.
 \end{frame}
@@ -213,6 +217,9 @@ preciosos serán estos, por lo que los términos Big Data y Machine Learning est
 
 \begin{frame}[fragile] % contar aprendizaje no supervisado y algoritmo kmeans por encima
 \frametitle{Algoritmo de K-Means}
+\begin{block}{Código fuente}
+\url{https://github.com/davidRetana}
+\end{block}
 En el aprendizaje no supervisado es el propio algoritmo el que debe encontrar los patrones ocultos entre los datos.
 El algoritmo de K-Means es un algoritmo muy popular de clusterización que se encaja dentro de esta categoría de 
 aprendizaje no supervisado.\\
@@ -228,17 +235,21 @@ Veamos de una manera gráfica su funcionamiento
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%TODO revisar
-\begin{frame}[fragile] % exponer el codigo fuente (explicar porqué se usa spark en vez de MapReduce)
-\frametitle{Código fuente}
-%\lstinputlisting[caption=KMeansSpark.py, language=Python, firstline=8, lastline=72]
-%                {C:/Users/David/Desktop/TFG/implementaciones/KMeansSpark.py}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame} % tabla y grafica comparativa de tiempos (spark vs numpy)
+\begin{frame}[fragile] % tabla y grafica comparativa de tiempos (spark vs numpy)
 \frametitle{Comparativa de rendimiento}
+
+\begin{table}[!htbp]\small
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|} % tabla
+    \hline
+    & 20kb & 199kb & 1.9mb & 19mb & 198mb \\ \hline
+    Python + Numpy & \textcolor{red}{$0.020$} & \textcolor{red}{$0.070$} & \textcolor{red}{$0.708$} & \textcolor{red}{$6.585$} & \textcolor{red}{$65.661$} \\ \hline
+    Python + Spark & \textcolor{blue}{$1.571$} & \textcolor{blue}{$1.472$} & \textcolor{blue}{$2.043$} & \textcolor{blue}{$7.041$} & \textcolor{blue}{$57.577$} \\ \hline
+  \end{tabular}
+\end{table}
+
+\centering
+\includegraphics[scale=0.5]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/sparkvsnumpy.png}
 
 \end{frame}
 
