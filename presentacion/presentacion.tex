@@ -80,18 +80,19 @@
 \begin{frame} % Introduccion a Big data y machine learning
   \frametitle{Introducción}
   \begin{block}{Big Data}
-  Vivimos en la era de los datos, cada día se producen más y más datos  que necesitan ser almacenados y
-  procesados para poder sacarles partido.\\
-  El termino \textbf{Big Data} nace como un concepto para hacer referencia a la incapacidad de 
-  los sistemas tradicionales de almacenar y procesar un conjunto masivo de datos.
+  \begin{itemize}
+    \item Era de los datos.
+    \item Conjunto masivo.
+    \item Incapacidad de los sistemas tradicionales para manejar dichos datos.
+  \end{itemize}
   \end{block}
   
   \begin{block}{Machine Learning}
-  El \textbf{machine learning} es una rama de la inteligencia artificial que permite crear sistemas que 
-  aprendan automáticamente sin ser programados explícitamente para ello.\\
-  Consiste en sacar patrones de los datos con el fin de crear modelos que permitan obtener un beneficio
-  de los mismos. Estos modelos se apoyan en fórmulas matemáticas para su creación, principalmente de 
-  álgebra lineal y estadística.
+  \begin{itemize}
+    \item Inteligencia artificial.
+    \item Sistemas que aprenden automáticamente sacando patrones de los datos.
+    \item Se apoya en las matemáticas para construir los modelos.
+  \end{itemize}
   \end{block}
 \end{frame}
 
@@ -99,10 +100,10 @@
 
 \begin{frame} % Como encajan Hadoop, mapreduce, spark y machine learning al big data
   \frametitle{Apache Hadoop y Apache Spark}
+  \centering
+  \includegraphics[width=0.5\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/mapreduce_logo.jpg}\\
   Actualmente, existen diversas herramientas que nos permiten trabajar con las grandes cantidades de datos
-  manejadas en el \textit{Big Data}. \textit{Apache Hadoop} es el software base que nos permite desplegar
-  un cluster de máquinas sobre el que trabajar y desarrollar nuestros algoritmos.\\
-  Hadoop incluye MapReduce como motor de procesamiento por defecto pero también es perfectamente compatible con Spark.
+  manejadas en el \textit{Big Data}.
   \includegraphics[width=0.5\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/hadoop_logo.png}%
   \includegraphics[width=0.5\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/spark_logo.png}
 \end{frame}
@@ -197,18 +198,11 @@ $ pyspark --master yarn-client
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\textit{Machine Learning}}
 
-%El desarrollo de algoritmos paralelos de machine learning, debido a su carácter experimental,
-%necesitan ser entrenados varias veces para obtener el mejor ajuste de los parámetros. De esta manera, el cómputo
-%paralelo se vuelve fundamental para reducir los tiempos de ejecución.
 \begin{frame} % machine learning en general
 \frametitle{Machine Learning}
-¿Cómo encaja el machine learning en el Big Data?
+\textbf{¿Cómo encaja el machine learning en el Big Data?}
 \centering
 \includegraphics[scale=0.5]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/contour_surface.png}
-
-
-Debido a que el Machine Learning se alimenta de los datos, cuantos más datos tengamos para entrenar los modelos más 
-preciosos serán estos, por lo que los términos Big Data y Machine Learning están estrechamente relacionados.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -217,13 +211,24 @@ preciosos serán estos, por lo que los términos Big Data y Machine Learning est
 
 \begin{frame}[fragile] % contar aprendizaje no supervisado y algoritmo kmeans por encima
 \frametitle{Algoritmo de K-Means}
+
+\begin{block}{Características}
+  \begin{itemize}
+    \item Algoritmo de aprendizaje no supervisado
+    \item Clustering
+    \item Muy popular y utilizado hoy en día
+  \end{itemize}
+\end{block}
+
+%TODO meter la formula matematica
+\begin{block}{}
+  Escribir aquí una formula matemática
+\end{block}
+
 \begin{block}{Código fuente}
 \url{https://github.com/davidRetana}
 \end{block}
-En el aprendizaje no supervisado es el propio algoritmo el que debe encontrar los patrones ocultos entre los datos.
-El algoritmo de K-Means es un algoritmo muy popular de clusterización que se encaja dentro de esta categoría de 
-aprendizaje no supervisado.\\
-Veamos de una manera gráfica su funcionamiento
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
