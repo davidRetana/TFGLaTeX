@@ -12,37 +12,25 @@
 \usepackage[spanish]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
-\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{dsfont} % inclusion de R^n
 \usepackage{animate} % para crear el gif de kmeans
 \decimalpoint % cambia la coma por el punto como separador de decimales en math mode
-%\usepackage[usenames, dvipsnames]{xcolor} % para los colores
 \usepackage{listings} % para el codigo fuente
 \lstset
   {
-  %backgroundcolor=\color{},   % Indica el color de fondo
   basicstyle=\footnotesize,
-  commentstyle=\color{green},      % Estilo de los comentarios
+  commentstyle=\color{green}, % Estilo de los comentarios
   }
 \usepackage{hyperref} % para las referencias cruzadas
-%TODO revisar
 \hypersetup
 {
-    %bookmarks=true,         % show bookmarks bar?
-    %unicode=false,          % non-Latin characters in Acrobat’s bookmarks
-    %pdftoolbar=true,        % show Acrobat’s toolbar?
-    %pdfmenubar=true,        % show Acrobat’s menu?
-    %pdffitwindow=false,     % window fit to page when opened
-    pdfstartview={Fit},    % fits the width of the page to the window
+    pdfstartview={Fit},      % fits the width of the page to the window
     pdftitle={Estudio comparativo de Algoritmos de machine learning e implementación en Hadoop},    % title
     pdfauthor={David Retana Ribeiro},     % author
     pdfsubject={Big data y machine learning},   % subject of the document
-    pdfkeywords={computacion paralela, apache hadoop, apache spark, machine Learning, big data, python, k means,
-               naive bayes, yarn, hdfs, cluster}, % list of keywords
+    pdfkeywords={computacion paralela, apache hadoop, apache spark, machine learning, big data, python, k means, cluster},
     pdfnewwindow=true,      % links in new PDF window
     colorlinks=true,       % false: boxed links; true: colored links
-    %linkcolor=red,          % color of internal links (change box color with linkbordercolor)
-    %citecolor=green,        % color of links to bibliography
-    %filecolor=magenta,      % color of file links
     urlcolor=cyan           % color of external links
 }
 
@@ -111,6 +99,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DESPLIEGUE HADOOP %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Despliegue de un \textit{cluster Hadoop}}
 
 \begin{frame} % imagen de topologia de un cluster Hadoop
@@ -156,13 +145,12 @@ $ hadoop jar WordCount.jar WordCount \
   
 En un navegador escribimos: \path{<ip_resource_manager>:8088}\\
 \vfill
-%De esta manera podemos ver los trabajos que están corriendo en nuestro \textit{cluster} y su progreso.
-  
 \includegraphics[width=\textwidth]{C:/Users/David/Desktop/TFG/TFGLatex/presentacion/recursos/mapreduce_application.png}
   
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{\textit{Spark}}
 
 \begin{frame}[fragile]
@@ -196,6 +184,7 @@ $ pyspark --master yarn-client
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MACHINE LEARNING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{\textit{Machine Learning}}
 
 \begin{frame} % machine learning en general
@@ -220,13 +209,13 @@ $ pyspark --master yarn-client
   \end{itemize}
 \end{block}
 
-%TODO meter la formula matematica
-\begin{block}{}
-  Escribir aquí una formula matemática
+\begin{block}{Función objetivo}
+  $$ J(c, \mu) = \frac{1}{m} \sum_{i=1}^m || x^{(i)} - \mu_{c^{(i)}} ||^2 $$ 
+  donde $c = (c^{(1)}, \cdots, c^{(m)}) \in \mathds{R}^n$ y $\mu = (\mu_1, \cdots, \mu_k) \in \mathds{R}^k$
 \end{block}
 
 \begin{block}{Código fuente}
-\url{https://github.com/davidRetana}
+\url{https://github.com/davidRetana/TFG}
 \end{block}
 
 \end{frame}
@@ -248,8 +237,8 @@ $ pyspark --master yarn-client
   \begin{tabular}{|c|c|c|c|c|c|} % tabla
     \hline
     & 20kb & 199kb & 1.9mb & 19mb & 198mb \\ \hline
-    Python + Numpy & \textcolor{red}{$0.020$} & \textcolor{red}{$0.070$} & \textcolor{red}{$0.708$} & \textcolor{red}{$6.585$} & \textcolor{red}{$65.661$} \\ \hline
-    Python + Spark & \textcolor{blue}{$1.571$} & \textcolor{blue}{$1.472$} & \textcolor{blue}{$2.043$} & \textcolor{blue}{$7.041$} & \textcolor{blue}{$57.577$} \\ \hline
+    Python + Numpy & \textcolor{blue}{$0.020$} & \textcolor{blue}{$0.070$} & \textcolor{blue}{$0.708$} & \textcolor{blue}{$6.585$} & \textcolor{blue}{$65.661$} \\ \hline
+    Python + Spark & \textcolor{red}{$1.571$} & \textcolor{red}{$1.472$} & \textcolor{red}{$2.043$} & \textcolor{red}{$7.041$} & \textcolor{red}{$57.577$} \\ \hline
   \end{tabular}
 \end{table}
 
