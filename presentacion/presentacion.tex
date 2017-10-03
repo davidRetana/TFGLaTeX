@@ -211,7 +211,9 @@ $ pyspark --master yarn-client
 
 \begin{block}{Función objetivo}
   $$ J(c, \mu) = \frac{1}{m} \sum_{i=1}^m || x^{(i)} - \mu_{c^{(i)}} ||^2 $$ 
-  donde $c = (c^{(1)}, \cdots, c^{(m)}) \in \mathds{R}^n$ y $\mu = (\mu_1, \cdots, \mu_k) \in \mathds{R}^k$
+  \centering
+  donde $c = (c^{(1)}, \cdots, c^{(m)}) \in \mathds{R}^m$ y $\mu = (\mu_1, \cdots, \mu_k) \in \mathds{R}^k$ \\
+  $x^{(i)}, \mu_j \in \mathds{R}^n \quad \forall i=1,\cdots,m; j=1,\cdots,k$
 \end{block}
 
 \begin{block}{Código fuente}
