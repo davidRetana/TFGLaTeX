@@ -17,23 +17,23 @@ De esta manera facilita así las oportunidades de \textit{data locality}, explic
 \noindent \textit{Apache Hadoop} se compone de dos partes fundamentales:
 \begin{description}
   \item[HDFS](\textit{Hadoop Distributed File System})\index{Hadoop!HDFS}, es el software encargado de almacenar 
-  y distribuir los datos a través de las máquinas del cluster. Es altamente escalable y tolerante a fallos.
+  y distribuir los datos a través de las máquinas del \textit{cluster}. Es altamente escalable y tolerante a fallos.
   Cuando un archivo es subido al \textit{cluster}, este es dividido en bloques de $128 mb$ y replicado por
   3 sobre los nodos.
-  Su arquitectura esta basada en el tipo maestro-exclavo:
+  Su arquitectura esta basada en el tipo maestro-esclavo:
   \begin{itemize}
     \item \textit{NameNode}(Maestro) Contiene los metadatos de los archivos.
-    \item \textit{NodeManager}(Exclavo) Contine los datos en sí del archivo.
+    \item \textit{NodeManager}(Esclavo) Contiene los datos en sí del archivo.
   \end{itemize}
 
   \item[YARN] (\textit{Yet Another Resource Negotiator})\index{Hadoop!YARN}, es el encargado de gestionar 
-  los recursos del \textit{cluster} (memoria y \textit{CPU} principalmente) e incluye \textit{MapReduce v2} 
+  los recursos del \textit{cluster} (memoria y \textit{CPU} principalmente) e incluye \textit{MapReduce} 
   como motor de procesamiento. También es escalable y tolerante a fallos y al igual que \textit{HDFS}, 
-  esta diseñado basándose en una arquitectura maestro-exclavo:
+  esta diseñado basándose en una arquitectura maestro-esclavo:
   \begin{itemize}
     \item \textit{ResourceManager}(maestro), es el encargado de asignar los contenedores (cajas de
     memoria y \textit{CPU}) en los diversos nodos del \textit{cluster} para el desarrollo de las tareas.
-    \item \textit{NodeManager}(exclavo), son los encargados de ejecutar propiamente el código.
+    \item \textit{NodeManager}(esclavo), son los encargados de ejecutar propiamente el código.
   \end{itemize}
 \end{description}
 
